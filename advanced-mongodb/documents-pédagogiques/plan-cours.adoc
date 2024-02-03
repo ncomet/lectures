@@ -1,0 +1,72 @@
+= Fiche pédagogique
+
+== Public
+
+M2 DEV
+
+== Pré-requis
+
+Un ordinateur et un connection internet
+
+== Volume horaire
+
+35h
+
+== Objectifs de formation
+
+En situation professionnelle, les apprenants seront capables de comprendre le fonctionnement de la base de données NoSQL MongoDB, de son indexation. Ils seront capables de diagnostiquer les problèmes de performance et d'y remédier.
+
+Ils sauront installer et paramétrer un cluster et configurer la réplication ou le sharding de manière optimale afin de prévoir les montées en charge.
+
+== Objectifs pédagogiques
+
+TODO
+
+== Synopsis de la formation
+
+[%header,cols="1,1,20"] 
+|===
+|
+|Durée
+|Thématique de la session
+
+|1
+|3h
+|Introduction à MongoDB, différence entre ACID/BASE, relationnel et document.
+
+|2
+|3h
+|Installation des outils locaux, familiarisation avec le shell `mongosh`
+
+|3
+|3h
+|Les différents types d'index, leurs implications et limitations
+
+|4
+|3h
+|Analyse des index: `explain`, `hint`
+
+|5
+|3h
+|Architecture et déploiement des clusters
+
+|6
+|3h
+|Bonne pratiques: working set, mémoire, disque
+
+|7
+|3h
+|Sharding, mise à l'échelle horizontale: bonnes pratiques
+
+|8
+|3h
+|Réplication, mise à l'échelle verticale
+
+|9
+|3h
+|Profilage & statistiques avancées: `mongotop`, `mongostat`
+
+|10
+|3h
+|Évaluation finale
+|===

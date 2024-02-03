@@ -1,16 +1,54 @@
-= MongoDB - NoSQL optimizations
+= MongoDB - NoSQL Optimizations
 :imagesdir: images
 :source-highlighter: highlightjs
 :revealjs_theme: white
 :revealjs_history: true
 :revealjs_slideNumber: true
-:revealjs_totalTime: 3600
 :customcss: custom.css
 :icons: font
 :school: supdevinci.png
 
 image:{school}[]
 
-== Intro
+== Hello world
 
-Hello
+🎤
+
+[.columns.is-vcentered]
+=== Qui je suis
+
+[.column]
+image:avatar.jpg[width=60%]
+
+[.column]
+https://twitter.com/NicolasComet[icon:twitter[]@NicolasComet] +
+https://github.com/ncomet[icon:github[].com/ncomet] +
+https://www.linkedin.com/in/nicolascomet[icon:linkedin[].com/nicolascomet] +
+
+
+[%notitle]
+=== Parcours
+
+image:betclic.png[width=20%] +
+🥽🧪 Experience Lab
+
+---
+
+image:ubisoft.jpg[width=10%] +
+☁️🎮  Streaming Team
+
+---
+
+image:lectra.png[width=20%] +
+🚘 🛋️ 👗 Cloud automation
+
+---
+
+=== Speaker conférences
+
+image::confs.jpeg[]
+
+
+
+
+
