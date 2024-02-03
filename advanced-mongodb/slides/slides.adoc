@@ -1,0 +1,16 @@
+= MongoDB - NoSQL optimizations
+:imagesdir: images
+:source-highlighter: highlightjs
+:revealjs_theme: white
+:revealjs_history: true
+:revealjs_slideNumber: true
+:revealjs_totalTime: 3600
+:customcss: custom.css
+:icons: font
+:school: supdevinci.png
+
+image:{school}[]
+
+== Intro
+
+Hello

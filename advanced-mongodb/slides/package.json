@@ -1,0 +1,18 @@
+{
+  "name": "mondogb-lecture",
+  "version": "1.0.0",
+  "description": "slides for mongodb M2 lecture",
+  "watch": {
+    "build": "slides.adoc"
+  },
+  "scripts": {
+    "build": "npx asciidoctor-revealjs slides.adoc",
+    "watch": "npm-watch"
+  },
+  "keywords": [],
+  "author": "nicolas.comet@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@asciidoctor/reveal.js": "^5.1.0"
+  }
+}
