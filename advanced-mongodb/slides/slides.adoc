@@ -47,8 +47,3 @@ image:lectra.png[width=20%] +
 === Speaker conférences
 
 image::confs.jpeg[]
-
-
-
-
-
