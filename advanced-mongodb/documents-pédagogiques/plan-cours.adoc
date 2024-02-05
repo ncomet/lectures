@@ -1,8 +1,13 @@
-= Fiche pédagogique
+= {lecture}
+Nicolas COMET <nicolas.comet@gmail.com>
+:lecture: MongoDB, Optimisations NoSQL
+:level: M2 Développement
+:year: 2023-2024
 
-== Public
+[.metadata]
+{author}
 
-M2 DEV
+{level}, Année scolaire {year}
 
 == Pré-requis
 
@@ -24,7 +29,7 @@ TODO
 
 == Synopsis de la formation
 
-[%header,cols="1,1,20"] 
+[%header,cols="1,2,20"] 
 |===
 |
 |Durée
