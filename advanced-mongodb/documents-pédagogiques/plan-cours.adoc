@@ -57,15 +57,15 @@ TODO
 
 |6
 |3h
-|Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
+| Pipeline d'aggrégation, `lookup`
 
 |7
 |3h
-|Sharding, mise à l'échelle horizontale, bonne utilisation
+|Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
 
 |8
 |3h
-|Réplication, mise à l'échelle verticale
+|Sharding, mise à l'échelle horizontale, Réplication, mise à l'échelle verticale
 
 |9
 |3h
