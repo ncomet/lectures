@@ -32,31 +32,31 @@ TODO
 
 |1
 |3h
-|Introduction à MongoDB, différence entre ACID/BASE, relationnel et document.
+|Brise glace. Introduction à MongoDB, différence entre ACID/BASE, relationnel et document.
 
 |2
 |3h
-|Installation des outils locaux, familiarisation avec le shell `mongosh`
+|Installation des outils locaux, familiarisation avec le shell `mongosh` & Compass.
 
 |3
 |3h
-|Les différents types d'index, leurs implications et limitations
+|Les différents types d'index, leurs implications, bonnes pratiques.
 
 |4
 |3h
-|Analyse des index: `explain`, `hint`
+|Analyse des index: `explain`, `hint`. Comment interpréter et optimiser.
 
 |5
 |3h
-|Architecture et déploiement des clusters
+|Principes de modélisation de données (normalisation, dénormalisation)
 
 |6
 |3h
-|Bonne pratiques: working set, mémoire, disque
+|Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
 
 |7
 |3h
-|Sharding, mise à l'échelle horizontale: bonnes pratiques
+|Sharding, mise à l'échelle horizontale, bonne utilisation
 
 |8
 |3h
