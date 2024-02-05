@@ -70,3 +70,14 @@ TODO
 |3h
 |Évaluation finale
 |===
+
+== Modalités d'évaluation
+
+Différents moyens mis en œuvre pour s'assurer de la bonne progression des apprenants sous la forme d'évaluation formative:
+
+* TDs pendant certaines sessions (requêtage, index, modélisation, architecture des clusters)
+
+Deux évaluations sommatives pour certifier les compétences acquises des apprenants:
+
+* Cas d'étude / devoir : migration d'une base de données relationnelle vers MongoDB, d'un schéma existant vers une modélisation complète et performante, argumentée. Par groupes de 2 apprenants.
+* Réalisation en temps limité (évaluation finale) lors de la dernière session: diagnostiquer les raisons de sous-performance d'une architecture existante. Remédier à ses soucis grâce à un plan d'action décrit et argumenté.
