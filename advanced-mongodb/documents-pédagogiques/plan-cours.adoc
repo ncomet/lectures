@@ -1,4 +1,4 @@
-= {lecture}
+= Plan de cours : {lecture}
 Nicolas COMET <nicolas.comet@gmail.com>
 :lecture: MongoDB, Optimisations NoSQL
 :level: M2 Développement
