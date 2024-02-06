@@ -3,15 +3,19 @@ Nicolas COMET <nicolas.comet@gmail.com>
 :lecture: MongoDB, Optimisations NoSQL
 :level: M2 Développement
 :year: 2023-2024
+:numbered:
 
 [.metadata]
-{author}
+Formateur : {author}, {email}
 
-{level}, Année scolaire {year}
+Année scolaire : *{year}*
+
+Public : *{level}*
 
 == Pré-requis
 
-Un ordinateur et un connection internet
+* Un ordinateur et un connection internet
+* Connaissances basiques des bases de données relationnelles
 
 == Volume horaire
 
@@ -25,7 +29,22 @@ Ils sauront installer et paramétrer un cluster et configurer la réplication ou
 
 == Objectifs pédagogiques
 
-TODO
+=== MongoDB par la pratique
+
+Les apprenants, à l'issue de la formation seront capables de :
+
+* Comprendre la méthodologie de modélisation de données de la base NoSQL document MongoDB
+* Savoir créer des index efficaces pour optimiser les requêtes
+* Diagnostiquer un manque ou soucis d'indexation à la source de problèmes de performances
+* Concevoir des requêtes complexes (statistiques, BI, jointures)
+
+=== Architecture des clusters
+
+Les apprenants, à l'issue de la formation seront à même de :
+
+* Définir une architecture de cluster(s) dimensionnée aux besoins
+* Comprendre les differentes stratégies de mise à l'échelle des clusters, et leurs implications
+* Diagnostiquer en tant qu'administrateur·ice·s la cause d'une eventuelle congestion d'infrastructure
 
 == Synopsis de la formation
 
@@ -41,7 +60,7 @@ TODO
 
 |2
 |3h
-|Installation des outils locaux, familiarisation avec le shell `mongosh` & Compass.
+|Installation des outils locaux, familiarisation avec le shell `mongosh` & Compass, premières requêtes.
 
 |3
 |3h
@@ -65,7 +84,7 @@ TODO
 
 |8
 |3h
-|Sharding, mise à l'échelle horizontale, Réplication, mise à l'échelle verticale
+|Réplication, sharding : mise à l'échelle horizontale vs. Mise à l'échelle verticale
 
 |9
 |3h
