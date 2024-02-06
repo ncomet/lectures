@@ -1,5 +1,0 @@
-= Grille d'évaluation : {lecture}
-Nicolas COMET <nicolas.comet@gmail.com>
-:lecture: MongoDB, Optimisations NoSQL
-:level: M2 Développement
-:year: 2023-2024
