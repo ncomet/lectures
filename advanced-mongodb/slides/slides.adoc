@@ -47,3 +47,35 @@ image:lectra.png[width=20%] +
 === Speaker conférences
 
 image::confs.jpeg[]
+
+== Jour 1
+
+=== Introduction à MongoDB
+
+=== Outils, binaires
+
+== Jour 2
+
+=== Indexation
+
+=== Analyse des index
+
+== Jour 3
+
+=== Modélisation
+
+=== Pipeline d'aggrégation
+
+== Jour 4
+
+=== Architecture des clusters
+
+=== Mise à l'échelle
+
+== Jour 5
+
+=== Profilage & Statistiques
+
+=== Questions
+
+=== Evaluation : diagnostic d'un cluster
