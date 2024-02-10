@@ -10,7 +10,7 @@
 
 image:{school}[]
 
-== Hello world
+== `Hello world!`
 
 🎤
 
@@ -51,6 +51,93 @@ image::confs.jpeg[]
 == Jour 1
 
 === Introduction à MongoDB
+
+=== NoSQL ?
+
+[%step]
+**N**ot **O**nly *SQL*
+
+[%step]
+Categorie de icon:database[]
+
+[%step]
+!= `RDBMS`
+
+=== NoSQL
+
+* Modélisation différente
+* Larges volumes de données
+* Données non/semi-structurées
+* Schémas flexibles
+* Mise à l'échelle horizontale
+
+=== Catégories
+
+* Clé-valeur (Redis, AWS DynamoDB)
+* Documents (MongoDB, CouchDB)
+* Graphes (Neo4J)
+* Colonnes (Cassandra, GCP BigQuery, AWS Redshift)
+
+=== ACID / BASE
+
+=== ACID
+
+Atomicity:: The database transaction must completely succeed or completely fail. Partial success is not allowed.
+Consistency:: During the database transaction, the DB progresses from one valid state to another. The state is never invalid.
+
+[%notitle]
+=== ACID
+
+Isolation:: The client's database transaction must occur in isolation from other clients attempting to transact with the DB.
+Durability:: Once a transaction is committed, its changes are permanently stored in the database, even in the event of a system failure or crash. This ensures that committed transactions persist and are not lost.
+
+=== BASE
+
+Basically Available:: The system remains operational and responsive despite failures or partitions in the network.The system as a whole remains available to serve requests.
+Soft State:: Data can be inconsistent. The system may temporarily exist in an inconsistent state, but it will eventually converge to a consistent state.
+
+[%notitle]
+=== BASE
+
+Eventual consistency:: Given enough time and absence of further updates, all replicas of the data will eventually converge to a consistent state.
+
+=== Modèle R/W
+
+[.stretch]
+image::r-w-model.png[]
+
+=== MongoDB
+
+* Catégorie: documents
+* ACID en lecture/écriture *au document*
+* Optionnel BASE en lecture du document
+
+image:read-write.png[width=40%] image:read-write2.png[width=37%]
+
+[%notitle]
+=== Relationnel vs. Document
+
+[%header,cols="1,1"] 
+|===
+|Relationnel
+|Document
+
+|database
+|database
+
+|table
+|collection
+
+|row
+|document
+
+|column
+|field
+
+|primary key
+|primary index `_id`
+
+|===
 
 === Outils, binaires
 
