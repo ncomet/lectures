@@ -134,10 +134,38 @@ image:read-write.png[width=40%] image:read-write2.png[width=37%]
 |column
 |field
 
-|primary key
-|primary index `_id`
+|PK (primary key)
+|primary index (`_id`)
 
 |===
+
+[%notitle]
+=== Relationnel vs. Document
+
+[%header,cols="1,1"] 
+|===
+|Relationnel
+|Document
+
+|FK (foreign key)
+|N/A
+
+|JOIN
+|N/A (~)
+|===
+
+=== Document
+
+[source, json]
+----
+{
+  _id: ObjectId("509a8fb2f3f4948bd2f983a0"),
+  name: "Jean Neige",
+  age: 55,
+  friends: ["Bob", "Alice"],
+  died: true
+}
+----
 
 === Outils, binaires
 
