@@ -160,10 +160,14 @@ image:read-write.png[width=40%] image:read-write2.png[width=37%]
 ----
 {
   _id: ObjectId("509a8fb2f3f4948bd2f983a0"),
-  name: "Jean Neige",
-  age: 55,
-  friends: ["Bob", "Alice"],
-  died: true
+  name: "Jon Snow",
+  age: 24,
+  parents: ["Lyanna Stark", "Rhaegar Targaryen"],
+  died: true,
+  politicalInfo: {
+    house: "Targaryen",
+    affiliations: ["House Stark", "Night's Watch"]
+  }
 }
 ----
 
