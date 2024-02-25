@@ -44,13 +44,13 @@ jobs:
                 echo "Skipping directory: $d"
                 continue
             fi
-            npm --prefix "$d/slides" ci
-            npm --prefix "$d/slides" run build
-            cp -R "$d/slides/node_modules" "public/$d"
-            cp -R "$d/slides/images" "public/$d"
-            cp "$d/slides/custom.css" "public/$d/custom.css"
-            cp "$d/slides/slides.html" "public/$d/index.html"
-            touch "public/$d/.nojekyll"
+            npm --prefix "${d}slides" ci
+            npm --prefix "${d}slides" run build
+            cp -R "${d}slides/node_modules" "public/$d"
+            cp -R "${d}slides/images" "public/$d"
+            cp "${d}slides/custom.css" "public/${d}custom.css"
+            cp "${d}slides/slides.html" "public/${d}index.html"
+            touch "public/${d}.nojekyll"
           done
           
       - name: Build TDs
@@ -60,9 +60,9 @@ jobs:
                 echo "Skipping directory: $d"
                 continue
             fi
-            mkdir "public/$d/tds"
-            docker run --rm -v "$(pwd)/$d/tds":/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
-            cp "$d/tds/*.html" "public/$d/tds"
+            mkdir "public/${d}tds"
+            docker run --rm -v "$(pwd)/${d}tds":/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
+            cp "${d}tds/*.html" "public/${d}tds"
           done
 
       - name: Deploy 🚀
