@@ -36,27 +36,32 @@ jobs:
             </body>
           </html>
           EOF
-          touch public/.nojekyll
 
       - name: Install and Build slides
-        run: |
-          here=$(pwd)
-          echo "$here"
-          for d in */ ; do
-            cd "$d/slides"
-            npm ci
-            npm run build
-            cp -R node_modules "$here/public/$d"
-            cp -R images "$here/public/$d"
-            cp custom.css "$here/public/$d/custom.css"
-            cp slides.html "$here/public/$d/index.html"
-            touch "$here/public/$d/.nojekyll"
-            cd "$here"
+        run: |  
+          exclude_dirs=("public")
+          for d in */!(public)/ ; do
+            if [[ " ${exclude_dirs[@]} " =~ " $(basename "$dir") " ]]; then
+                echo "Skipping directory: $dir"
+                continue
+            fi
+            npm --prefix "$d/slides" ci
+            npm --prefix "$d/slides" run build
+            cp -R "$d/slides/node_modules" "public/$d"
+            cp -R "$d/slides/images" "public/$d"
+            cp "$d/slides/custom.css" "public/$d/custom.css"
+            cp "$d/slides/slides.html" "public/$d/index.html"
+            touch "public/$d/.nojekyll"
           done
           
       - name: Build TDs
         run: |
+          exclude_dirs=("public")
           for d in */ ; do
+            if [[ " ${exclude_dirs[@]} " =~ " $(basename "$dir") " ]]; then
+                echo "Skipping directory: $dir"
+                continue
+            fi
             mkdir "public/$d/tds"
             docker run --rm -v "$(pwd)/$d/tds":/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
             cp "$d/tds/*.html" "public/$d/tds"
