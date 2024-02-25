@@ -459,6 +459,45 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>                               ,'"`.,./.
+                             ,'        Y',"..
+                           ,'           \  | \
+                          /              . |  `
+                         /               | |   \
+            __          .                | |    .
+       _   \  `. ---.   |                | j    |
+      / `-._\   `Y   \  |                |.     |
+     _`.    ``    \   \ |..              '      |,-'""7,....
+     l     '-.     . , `|  | , |`. , ,  /,     ,'    '/   ,'_,.-.
+     `-..     `-.  : :     |/ `   ' "\,' | _  /          '-'    /___
+      \""' __.,.-`.: :        /   /._    l'.,'
+       `--,   _.-' `".           /__ `'-.' '         .
+       ,---..._,.--"""""""--.__..----,-.'   .  /    .'   ,.--
+       |                          ,':| /    | /     ;.,-'--      ,.-
+       |     .---.              .'  :|'     |/ ,.-='"-.`"`' _   -.'
+       /    \    /               `. :|--.  _L,"---.._        "----'
+     ,' `.   \ ,'           _,     `''   ``.-'       `-  -..___,'
+    . ,.  .   `   __     .-'  _.-           `.     .__    \
+    |. |`        "  ;   !   ,.  |             `.    `.`'---'
+    ,| |C\       ` /    | ,' |(]|            -. |-..--`
+   /  "'--'       '      /___|__]        `.  `- |`.
+  .       ,'                   ,   /       .    `. \
+    \                      .,-'  ,'         .     `-.
+     x---..`.  -'  __..--'"/"""""  ,-.      |   |   |
+    / \--._'-.,.--'     _`-    _. ' /       |     -.|
+   ,   .   `-..__ ...--'  _,.-' | `   ,.-.  ;   /  '|
+  .  _,'         '"-----""      |    `   | /  ,'    ;
+  |-'  .-.    `._               |     `._// ,'     /
+ _|    `-'   _,' "`--.._________|        `,'    _ /.
+//\   ,-._.'"/\__,.   _,"     /_\__/`. /'.-.'.-/_,`-'</code></pre>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_liens_utiles">Liens utiles</h2>
 <div class="sectionbody">
@@ -553,6 +592,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_import_des_données">Import des données</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+L&#8217;option <code>-d</code> permet d&#8217;importer dans une nouvelle base crée à la volée, nommée <code>test</code>
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ mongoimport -d test -c pokemons --jsonArray ./datasets/pokemons.json</code></pre>
@@ -609,12 +660,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <pre class="highlight"><code>show dbs</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Définissez la base de données dans laquelle nous venons d&#8217;importer les pokémons,</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>show dbs</code></pre>
+<pre class="highlight"><code>use test</code></pre>
 </div>
 </div>
 </div>
@@ -623,7 +678,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-25 16:55:28 UTC
+Last updated 2024-02-25 17:00:23 UTC
 </div>
 </div>
 </body>
