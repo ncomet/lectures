@@ -63,6 +63,13 @@ Categorie de icon:database[]
 [%step]
 != `RDBMS`
 
+=== Relationnel
+
+* Données structurées, prédéfinies
+* Nombreuses contraintes
+* Relations complexes
+* Transactions fortes
+
 === NoSQL
 
 * Modélisation différente
@@ -114,6 +121,12 @@ image::r-w-model.png[]
 
 image:read-write.png[width=40%] image:read-write2.png[width=37%]
 
+=== MongoDB
+
+* Schemaless
+* Documents hétérogènes
+* JSON (BSON ⚙️)
+
 [%notitle]
 === Relationnel vs. Document
 
@@ -154,6 +167,12 @@ image:read-write.png[width=40%] image:read-write2.png[width=37%]
 |N/A (~)
 |===
 
+=== Requêtes
+
+RDBMS -> SQL
+
+MongoDB -> Syntaxe JavaScript, queries JSON
+
 === Document
 
 [source, json]
@@ -162,16 +181,40 @@ image:read-write.png[width=40%] image:read-write2.png[width=37%]
   _id: ObjectId("509a8fb2f3f4948bd2f983a0"),
   name: "Jon Snow",
   age: 24,
-  parents: ["Lyanna Stark", "Rhaegar Targaryen"],
   died: true,
   politicalInfo: {
     house: "Targaryen",
     affiliations: ["House Stark", "Night's Watch"]
-  }
+  },
+  parents: [
+    {
+      id: "65db3d35964a1e955390b81e",
+      name: "Lyanna Stark",
+      age: 16
+    },
+    {
+      id: "75db3d3fa70e10a0b73f4d30",
+      name: "Rhaegar Targaryen",
+      age: 97
+    }
+  ]
 }
 ----
 
+=== Programmation Objet (POO)
+
+[source, java]
+----
+public record GoTCharacter(UUID id, String name, int age, List<GoTCharacter> parents) {}
+----
+
 === Outils, binaires
+
+CLI : `mongosh`
+
+image:compass.png[width=80%]
+
+=== TD 1
 
 == Jour 2
 
