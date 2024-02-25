@@ -1,5 +1,4 @@
 = TD1 : Requêtez-les tous !
-:numbered:
 :toc: left
 
 == Liens utiles
