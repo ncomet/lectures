@@ -1,0 +1,42 @@
+name: Build and Deploy
+on:
+  push:	
+    branches:	
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Prepare public
+        run: mkdir public
+
+      - name: Install and Build slides
+        run: |
+          cd advanced-mongodb/slides
+          npm ci
+          npm run build
+          cp -R node_modules ../../public
+          cp -R images ../../public
+          cp custom.css ../../public/custom.css
+          cp slides.html ../../public/index.html
+          touch ../../public/.nojekyll
+
+      - name: Build TDs
+        run: |
+          mkdir public/tds
+          cd advanced-mongodb/tds
+          docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
+          cp *.html ../../public/tds
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
