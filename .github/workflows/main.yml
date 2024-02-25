@@ -62,7 +62,7 @@ jobs:
             fi
             mkdir "public/${d}tds"
             docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor "${d}tds/*.adoc"
-            cp "${d}tds/*.html" "public/${d}tds"
+            cp ${d}tds/*.html public/${d}tds
           done
 
       - name: Deploy 🚀
