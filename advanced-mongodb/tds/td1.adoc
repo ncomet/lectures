@@ -110,7 +110,7 @@ est équivalent à
 $ mongosh "mongodb://localhost:27017"
 ```
 
-* Listez la base de données en cours d'utisation
+* Affichez la base de données en cours d'utilisation
 
 ```
 db
@@ -122,8 +122,14 @@ db
 show dbs
 ```
 
-* Définissez la base de données dans laquelle nous venons d'importer les pokémons,
+* Définissez la base de données dans laquelle nous venons d'importer les pokémons comme la base de travail courante
 
 ```
 use test
+```
+
+* Listez les collections de cette base
+
+```
+show collections
 ```
