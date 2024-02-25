@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir public
           for d in */ ; do
-            mdkir "public/$d"
+            mkdir "public/$d"
           done
           cat > public/index.html << EOF
           <!DOCTYPE html>
