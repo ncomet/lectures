@@ -39,10 +39,9 @@ jobs:
 
       - name: Install and Build slides
         run: |  
-          exclude_dirs=("public")
-          for d in */!(public)/ ; do
-            if [[ " ${exclude_dirs[@]} " =~ " $(basename "$dir") " ]]; then
-                echo "Skipping directory: $dir"
+          for d in */ ; do
+            if [ "$(basename "$d")" = "public" ]; then
+                echo "Skipping directory: $d"
                 continue
             fi
             npm --prefix "$d/slides" ci
@@ -56,10 +55,9 @@ jobs:
           
       - name: Build TDs
         run: |
-          exclude_dirs=("public")
           for d in */ ; do
-            if [[ " ${exclude_dirs[@]} " =~ " $(basename "$dir") " ]]; then
-                echo "Skipping directory: $dir"
+            if [ "$(basename "$d")" = "public" ]; then
+                echo "Skipping directory: $d"
                 continue
             fi
             mkdir "public/$d/tds"
