@@ -41,6 +41,7 @@ jobs:
       - name: Install and Build slides
         run: |
           here=$(pwd)
+          echo "$here"
           for d in */ ; do
             cd "$d/slides"
             npm ci
