@@ -6,7 +6,7 @@
     "build": "slides.adoc"
   },
   "scripts": {
-    "build": "npx --prefix $(npm prefix) asciidoctor-revealjs slides.adoc",
+    "build": "npx asciidoctor-revealjs slides.adoc",
     "watch": "npm-watch"
   },
   "keywords": [],

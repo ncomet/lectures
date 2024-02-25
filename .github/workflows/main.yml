@@ -36,17 +36,21 @@ jobs:
             </body>
           </html>
           EOF
+          touch public/.nojekyll
 
       - name: Install and Build slides
         run: |
+          here=$(pwd)
           for d in */ ; do
-            npm --prefix "./$d/slides" ci
-            npm --prefix "./$d/slides" run build
-            cp -R "$d/slides/node_modules" "public/$d"
-            cp -R "$d/slides/images" "public/$d"
-            cp "$d/slides/custom.css" "public/$d/custom.css"
-            cp "$d/slides/slides.html" "public/$d/index.html"
-            touch "public/$d/.nojekyll"
+            cd "$d/slides"
+            npm ci
+            npm run build
+            cp -R node_modules "$here/public/$d"
+            cp -R images "$here/public/$d"
+            cp custom.css "$here/public/$d/custom.css"
+            cp slides.html "$here/public/$d/index.html"
+            touch "$here/public/$d/.nojekyll"
+            cd "$here"
           done
           
       - name: Build TDs
