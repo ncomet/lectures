@@ -40,8 +40,8 @@ jobs:
       - name: Install and Build slides
         run: |
           for d in */ ; do
-            npm --prefix "$d/slides" ci
-            npm --prefix "$d/slides" run build
+            npm --prefix "./$d/slides" ci
+            npm --prefix "./$d/slides" run build
             cp -R "$d/slides/node_modules" "public/$d"
             cp -R "$d/slides/images" "public/$d"
             cp "$d/slides/custom.css" "public/$d/custom.css"
