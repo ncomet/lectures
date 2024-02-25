@@ -1,5 +1,6 @@
 = TD1 : Requêtez-les tous !
 :toc: left
+:icons: font
 
 ```
 
