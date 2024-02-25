@@ -16,25 +16,46 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Prepare public
-        run: mkdir public
+        run: |
+          mkdir public
+          for d in */ ; do
+            mdkir "public/$d"
+          done
+          cat > public/index.html << EOF
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <title>Lectures</title>
+            </head>
+            <body>
+              <h1>Lectures</h1>
+              <ul>
+                <li><a href="/advanced-mongodb">advanced-mongodb</a></li>
+              </ul>
+            </body>
+          </html>
+          EOF
 
       - name: Install and Build slides
         run: |
-          cd advanced-mongodb/slides
-          npm ci
-          npm run build
-          cp -R node_modules ../../public
-          cp -R images ../../public
-          cp custom.css ../../public/custom.css
-          cp slides.html ../../public/index.html
-          touch ../../public/.nojekyll
-
+          for d in */ ; do
+            npm --prefix "$d/slides" ci
+            npm --prefix "$d/slides" run build
+            cp -R "$d/slides/node_modules" "public/$d"
+            cp -R "$d/slides/images" "public/$d"
+            cp "$d/slides/custom.css" "public/$d/custom.css"
+            cp "$d/slides/slides.html" "public/$d/index.html"
+            touch "public/$d/.nojekyll"
+          done
+          
       - name: Build TDs
         run: |
-          mkdir public/tds
-          cd advanced-mongodb/tds
-          docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
-          cp *.html ../../public/tds
+          for d in */ ; do
+            mkdir "public/$d/tds"
+            docker run --rm -v "$(pwd)/$d/tds":/documents/ asciidoctor/docker-asciidoctor asciidoctor *.adoc
+            cp "$d/tds/*.html" "public/$d/tds"
+          done
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

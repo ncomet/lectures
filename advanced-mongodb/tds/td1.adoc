@@ -1,4 +1,4 @@
-= TD1
+= TD1 : Requêtez-les tous !
 :numbered:
 :toc: left
 
@@ -47,25 +47,21 @@ https://www.mongodb.com/try/download/compass
 
 === Vérification de la connexion
 
-Dans un shell
-
 ```
 $ mongosh
 ```
 
 == Import des données
 
-Dans un shell
-
 ```
-mongoimport -d test -c pokemons --jsonArray ./datasets/pokemons.json
+$ mongoimport -d test -c pokemons --jsonArray ./datasets/pokemons.json
 ```
 
 == TD
 
 === Première connection
 
-Connectez-vous à votre service local, par défaut
+* Connectez-vous à votre service local, par défaut
 
 ```
 $ mongosh
@@ -75,4 +71,22 @@ est équivalent à
 
 ```
 $ mongosh "mongodb://localhost:27017"
+```
+
+* Listez la base de données en cours d'utisation
+
+```
+db
+```
+
+* Listez toutes les bases de données
+
+```
+show dbs
+```
+
+* 
+
+```
+show dbs
 ```
