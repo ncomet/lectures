@@ -89,17 +89,19 @@ $ mongosh
 
 == Import des données
 
-NOTE: L'option `-d` permet d'importer dans une nouvelle base crée à la volée, nommée `test`
+NOTE: Par défaut, les données sont importées dans une base appelée `test`. On peut surcharger en passant l'option `-d` (ou `--database`) à `mongoimport`, c'est obligatoire pour `mongorestore`
 
 ```
-$ mongoimport -d test -c pokemons --jsonArray ./datasets/pokemons.json
+$ mongorestore -d test -c pokemons --drop ./datasets/samples_pokemon.bson
+$ mongoimport -c users --jsonArray --drop ./datasets/users.metadata.json
+$ mongoimport -c bios --drop ./datasets/bios.json
 ```
 
 == TD 
 
 === Première connection
 
-* Connectez-vous à votre service local, par défaut
+* Connectez-vous en lançant le shell mongo à votre service local, par défaut
 
 ```
 $ mongosh
@@ -117,20 +119,365 @@ $ mongosh "mongodb://localhost:27017"
 db
 ```
 
-* Listez toutes les bases de données
+=== Exercices
 
-```
-show dbs
-```
+[TIP]
+==== 
+Il est préférable d'utiliser la CLI `mongosh` pour les exercices. 
 
-* Définissez la base de données dans laquelle nous venons d'importer les pokémons comme la base de travail courante
+N'hésitez pas à utiliser la commande `help` pour consulter les commandes de premier niveau. 
 
-```
-use test
-```
+Pour les requêtes, vous pouvez vous réferer à https://www.mongodb.com/docs/mongodb-shell/crud/
+====
 
-* Listez les collections de cette base
+* q1
 
-```
-show collections
-```
+Listez les bases de données de votre connexion
+
+* q2
+
+Listez les collections de la base `test`
+
+
+NOTE: On lira la collection `pokemons` pour les questions suivantes
+
+* q3
+
+Affichez la liste de tous les documents de la collection `pokemons`. Que remarquez-vous ?
+
+* q4
+
+Affichez un document au hasard (pratique pour voir la forme dest éléments de la collection)
+
+* q5
+
+Trouvez le pokémon qui a pour `id` 42
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[
+  {
+    _id: ObjectId('58f56171ee9d4bd5e610d66d'),
+    id: 42,
+    num: '042',
+    name: 'Golbat',
+    img: 'http://www.serebii.net/pokemongo/pokemon/042.png',
+    type: [ 'Poison', 'Flying' ],
+    height: '1.60 m',
+    weight: '55.0 kg',
+    candy: 'Zubat Candy',
+    egg: 'Not in Eggs',
+    spawn_chance: 0.42,
+    avg_spawns: 42,
+    spawn_time: '02:15',
+    multipliers: null,
+    weaknesses: [ 'Electric', 'Ice', 'Psychic', 'Rock' ],
+    prev_evolution: [ { num: '041', name: 'Zubat' } ]
+  }
+]
+----
++++ </div></details> +++
+
+* q6
+
+Trouvez le pokémon qui a pour nom `Machop`
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[
+  {
+    _id: ObjectId('58f56171ee9d4bd5e610d685'),
+    id: 66,
+    num: '066',
+    name: 'Machop',
+    img: 'http://www.serebii.net/pokemongo/pokemon/066.png',
+    type: [ 'Fighting' ],
+    height: '0.79 m',
+    weight: '19.5 kg',
+    candy: 'Machop Candy',
+    candy_count: 25,
+    egg: '5 km',
+    spawn_chance: 0.49,
+    avg_spawns: 49,
+    spawn_time: '01:55',
+    multipliers: [ 1.64, 1.65 ],
+    weaknesses: [ 'Flying', 'Psychic', 'Fairy' ],
+    next_evolution: [
+      { num: '067', name: 'Machoke' },
+      { num: '068', name: 'Machamp' }
+    ]
+  }
+]
+----
++++ </div></details> +++
+
+* q7
+
+Comptez le nombre de pokémons qui ont une `spawn_chance` > 1.5
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+17
+----
++++ </div></details> +++
+
+* q8
+
+Comptez le nombre de pokémons qui ont une `spawn_chance` strictement entre 1 et 1.5
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+9
+----
++++ </div></details> +++
+
+* q9
+
+Comptez le nombre de pokémons qui ont une `spawn_chance` < 0.35 et un `avg_spawns` > 25
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+3
+----
++++ </div></details> +++
+
+* q10
+
+Affichez les *uniquement les noms* des pokémons de la requète 9.  (indice, _projection_)
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[ { name: 'Charmander' }, { name: 'Seel' }, { name: 'Dratini' } ]
+----
++++ </div></details> +++
+
+* q11
+
+Comptez les pokémons de type `Poison`, entre autres.
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+33
+----
++++ </div></details> +++
+
+* q12
+
+Comptez les pokémons de type `Poison` uniquement.
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+10
+----
++++ </div></details> +++
+
+* q13
+
+Afichez les `id` des pokémons de type `Poison` et `Ground`, entre autres.
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[ { id: 31 }, { id: 34 } ]
+----
++++ </div></details> +++
+
+* q14
+
+Afichez les noms des pokémons de qui ont une faiblesse (`weaknesses`) contre 7 types de pokemons.
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[ { name: 'Exeggcute' }, { name: 'Exeggutor' } ]
+----
++++ </div></details> +++
+
+* q15
+
+Affichez le pokémon qui a le moins de chance d'apparaitre. `spawn_chance`
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[
+  {
+    _id: ObjectId('58f56171ee9d4bd5e610d6c7'),
+    id: 132,
+    num: '132',
+    name: 'Ditto',
+    img: 'http://www.serebii.net/pokemongo/pokemon/132.png',
+    type: [ 'Normal' ],
+    height: '0.30 m',
+    weight: '4.0 kg',
+    candy: 'None',
+    egg: 'Not in Eggs',
+    spawn_chance: 0,
+    avg_spawns: 0,
+    spawn_time: 'N/A',
+    multipliers: null,
+    weaknesses: [ 'Fighting' ]
+  }
+]
+----
++++ </div></details> +++
+
+* q16
+
+Affichez les noms des pokémon pour lesquels celui-ci commence par `F`
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[ { name: 'Fearow' }, { name: "Farfetch'd" }, { name: 'Flareon' } ]
+----
++++ </div></details> +++
+
+* q17
+
+Comptez les pokémon dont le nom ne *commence ni* par `F` *ni* par `G`
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+136
+----
++++ </div></details> +++
+
+* q18
+
+Comptez le nombre de pokémons qui ont un `multiplier` null
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+151
+----
++++ </div></details> +++
+
+* q19
+
+Comptez le nombre de pokémons qui ne peuvent pas évoluer (`next_evolution`)
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+81
+----
++++ </div></details> +++
+
+NOTE: On lira la collection `bios` pour les questions suivantes
+
+* q20
+
+Trouvez le document pour lequel le nom de l'auteur est `Hopper`
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[
+  {
+    _id: 3,
+    name: { first: 'Grace', last: 'Hopper' },
+    title: 'Rear Admiral',
+    birth: ISODate('1906-12-09T05:00:00.000Z'),
+    death: ISODate('1992-01-01T05:00:00.000Z'),
+    contribs: [ 'UNIVAC', 'compiler', 'FLOW-MATIC', 'COBOL' ],
+    awards: [
+      {
+        award: 'Computer Sciences Man of the Year',
+        year: 1969,
+        by: 'Data Processing Management Association'
+      },
+      {
+        award: 'Distinguished Fellow',
+        year: 1973,
+        by: ' British Computer Society'
+      },
+      {
+        award: 'W. W. McDowell Award',
+        year: 1976,
+        by: 'IEEE Computer Society'
+      },
+      {
+        award: 'National Medal of Technology',
+        year: 1991,
+        by: 'United States'
+      }
+    ]
+  }
+]
+----
++++ </div></details> +++
+
+* q21
+
+Comptez les auteurs pour lequels un award a été décerné en 2001 (ou après)
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+5
+----
++++ </div></details> +++
+
+NOTE: On lira la collection `users` pour la question suivante
+
+* q22
+
+Trouvez de manière distincte tous les ages des users de la collection
+
++++ <details><summary> +++
+RESULTAT:
++++ </summary><div> +++
+[source, javascript]
+----
+[
+  20, 21, 22, 23, 24, 25, 26,
+  27, 28, 29, 30, 31, 32, 33,
+  34, 35, 36, 37, 38, 39, 40
+]
+----
++++ </div></details> +++
