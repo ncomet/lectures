@@ -12,7 +12,7 @@ image:{school}[]
 
 == `Hello world!`
 
-🎤
+🫵 🎤 ❓
 
 [.columns.is-vcentered]
 === Qui je suis
@@ -44,7 +44,7 @@ image:lectra.png[width=20%] +
 
 ---
 
-=== Speaker conférences
+=== 🎤 conférences
 
 image::confs.jpeg[]
 
@@ -222,7 +222,7 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html
 
 === Indexation
 
-Qu'est-ce qu'un index ? 👉
+Qu'est-ce qu'un index ? 👈
 
 [%step]
 * 📘 -> 👉📖
