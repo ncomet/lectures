@@ -453,7 +453,45 @@ ul.byline li + li {
   ]
 }</code></pre></div></div></div></section><section id="_programmation_objet_poo"><h2>Programmation Objet (POO)</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public record GoTCharacter(UUID id, String name, int age, List&lt;GoTCharacter&gt; parents) {}</code></pre></div></div></div></section><section id="_outils_binaires"><h2>Outils, binaires</h2><div class="slide-content"><div class="paragraph"><p>CLI : <code>mongosh</code></p></div>
 <div class="paragraph"><p><span class="image"><img src="images/compass.png" alt="compass" width="80%"></span></p></div></div></section><section id="_td_1"><h2>TD 1</h2><div class="slide-content"><div class="paragraph"><p><a href="https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html" class="bare">https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html</a></p></div></div></section></section>
-<section><section id="_jour_2"><h2>Jour 2</h2></section><section id="_indexation"><h2>Indexation</h2></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
+<section><section id="_jour_2"><h2>Jour 2</h2></section><section id="_indexation"><h2>Indexation</h2><div class="slide-content"><div class="paragraph"><p>Qu&#8217;est-ce qu&#8217;un index ? 👉</p></div>
+<div class="ulist"><ul><li class="fragment"><p>📘 &#8594; 👉📖</p></li><li class="fragment"><p>Optimisation</p></li><li class="fragment"><p>⬇⏱️ exécution des requêtes</p></li></ul></div></div></section><section id="_indexation_2"><h2>Indexation</h2><div class="slide-content"><div class="paragraph"><p>Contrepartie ?</p></div>
+<div class="ulist"><ul><li class="fragment"><p>Coût ⏱️ à l&#8217;écriture</p></li><li class="fragment"><p>Coût en espace (RAM/Disque)</p></li></ul></div></div></section><section id="_indexation_3"><h2>Indexation</h2><div class="slide-content"><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">Utilisation réfléchie</td></tr></table></div></div></section><section id="_index_mongodb"><h2>Index MongoDB ?</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-none hljs" data-noescape="true">db.pokemons.getIndexes()</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { age: -1 }, name: 'age_-1' }
+]</code></pre></div></div>
+<div class="paragraph"><p>L&#8217;index <code>_id</code> est obligatoire</p></div></div></section><section id="_créer_un_index"><h2>Créer un index</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.&lt;collection&gt;.createIndex(
+   { (field): (value) },
+   { name: "&lt;indexName&gt;" }
+)</code></pre></div></div></div></section><section id="_supprimer_un_index"><h2>Supprimer un index</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.&lt;collection&gt;.dropIndex("&lt;indexName&gt;")
+
+db.&lt;collection&gt;.dropIndexes([ "&lt;index1&gt;", "&lt;index2&gt;" ])</code></pre></div></div></div></section><section id="_exemple"><h2>Exemple</h2><div class="slide-content"><div class="paragraph"><p>Indexes simples (simple field)</p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.collection.createIndex( { age: -1 } )
+db.collection.createIndex( { nickname: 1 } )</code></pre></div></div></div></section><section id="_exemple_2"><h2>Exemple</h2><div class="slide-content"><div class="paragraph"><p>Indexes composés</p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.collection.createIndex( { age: -1, nickname: 1 } )</code></pre></div></div></div></section><section id="_ordre_des_champs"><h2>Ordre des champs !</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.createIndex( { name: 1, gpa: -1 } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find( { name: "Alice", gpa: 3.6 } ) ✅
+db.students.find( { name: "Bob" } ) ✅</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find( { gpa: { $gt: 3.5 } } ) ❌</code></pre></div></div></div></section><section id="_ordre_des_tris"><h2>Ordre des tris !</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.leaderboard.createIndex( { score: -1, username: 1 } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.leaderboard.find().sort( { score: -1, username: 1 } ) ✅
+db.leaderboard.find().sort( { score: 1, username: -1 } ) ✅</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.leaderboard.find().sort( { username: -1, score: 1 } ) ❌
+db.leaderboard.find().sort( { score: 1, username: 1 } ) ❌
+db.leaderboard.find().sort( { score: -1, username: -1 } ) ❌</code></pre></div></div></div></section><section id="_indexes_multi_clés"><h2>Indexes multi-clés</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.insertMany( [
+   {
+      "name": "Andre Robinson",
+      "test_scores": [ 88, 97 ]
+   },
+   {
+      "name": "Wei Zhang",
+      "test_scores": [ 62, 73 ]
+   },
+   {
+      "name": "Jacob Meyer",
+      "test_scores": [ 92, 89 ]
+   }
+] )</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.createIndex( { test_scores: 1 } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find({ test_scores: { $elemMatch: { $gt: 90 } } })</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
 <section><section id="_jour_3"><h2>Jour 3</h2></section><section id="_modélisation"><h2>Modélisation</h2></section><section id="_pipeline_daggrégation"><h2>Pipeline d&#8217;aggrégation</h2></section></section>
 <section><section id="_jour_4"><h2>Jour 4</h2></section><section id="_architecture_des_clusters"><h2>Architecture des clusters</h2></section><section id="_mise_à_léchelle"><h2>Mise à l&#8217;échelle</h2></section></section>
 <section><section id="_jour_5"><h2>Jour 5</h2></section><section id="_profilage_statistiques"><h2>Profilage &amp; Statistiques</h2></section><section id="_questions"><h2>Questions</h2></section><section id="_evaluation_diagnostic_dun_cluster"><h2>Evaluation : diagnostic d&#8217;un cluster</h2></section></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
