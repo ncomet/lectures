@@ -44,6 +44,12 @@ image:lectra.png[width=20%] +
 
 ---
 
+=== 👨🏻‍💻
+
+* Backend
+* Kotlin
+* Clean Archi, TDD, DDD
+
 === 🎤 conférences
 
 image::confs.jpeg[]
