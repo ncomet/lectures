@@ -540,7 +540,102 @@ db.leaderboard.find().sort( { score: -1, username: -1 } ) ❌</code></pre></div>
    {
       $text: { $search: "coffee" }
    }
-)</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
+)</code></pre></div></div></div></section><section id="_wildcard_indexes"><h2>Wildcard indexes</h2><div class="slide-content"><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">À éviter, sauf quand :</td></tr></table></div>
+<div class="ulist"><ul><li><p>Requêtes sur documents trop hétérogènes</p></li><li><p>Requêtes sur un champ hétérogène</p></li></ul></div>
+<div class="paragraph"><p>Si les documents sont globalement uniformes, privilégier les indexes composés</p></div></div></section><section id="_wildcard_indexes_2"><div class="slide-content"><div class="listingblock"><div class="title">Wildcard indexes</div><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">[
+   {
+      "product_name" : "Spy Coat",
+      "attributes" : {
+         "material" : [ "Tweed", "Wool", "Leather" ],
+         "size" : {
+            "length" : 72
+         }
+      }
+   },
+  {
+      "product_name" : "Spy Pen",
+      "attributes" : {
+         "secret_feature" : {
+            "name" : "laser",
+            "power" : "1000",
+            "units" : "watts",
+         }
+      }
+   }
+]</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.products.createIndex( { "attributes.$**" : 1 } ) 👈</code></pre></div></div></div></section><section id="_indexes_géospatiaux"><h2>Indexes géospatiaux</h2><div class="slide-content"><div class="ulist"><ul><li><p>Indexes <code>2d</code> 🔶</p></li><li><p>Indexes <code>2dsphere</code> 🌐</p></li></ul></div></div></section><section id="_2"><h2>🌐</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.map.insert({
+   "_id": "Westfield London",
+   "location": [ -0.22157, 51.507176 ]
+});
+db.map.insert({
+   "_id": "Green Lanes Shopping Centre",
+   "location": [ -0.098092, 51.576198 ]
+});</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.map.createIndex({"location": "2dsphere"}); 👈
+
+db.map.find({
+  "location": {
+      "$nearSphere": { // même chose que $near
+         "$geometry": {
+            "type": "Point",
+            "coordinates": [-0.127748, 51.507333]
+         }
+      }
+   }
+});</code></pre></div></div></div></section><section id="_3"><h2>🔶</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.map.createIndex({"location": "2d"}); 👈
+
+db.map.find({"location":{"$nearSphere":[ -0.127748, 51.507333 ]}});
+[ /* $nearSphere */
+    {"_id" : "Westfield London"},
+    {"_id" : "Green Lanes Shopping Centre"}
+]
+
+db.map.find({"location":{"$near":[ -0.127748, 51.507333 ]}});
+[ /* $near */
+    {"_id" : "Green Lanes Shopping Centre"},
+    {"_id" : "Westfield London"}
+]</code></pre></div></div></div></section><section id="_operations"><h2>Operations 🔶 &amp; 🌐</h2><div class="slide-content"><div class="ulist"><ul><li><p><code>$geoIntersects</code></p></li><li><p><code>$geoWithin</code></p></li><li><p><code>$near</code></p></li><li><p><code>$nearSphere</code></p></li></ul></div>
+<div class="paragraph"><p>Sur des GeoJSON objects : <code>Point</code>, <code>LineString</code>, <code>Polygon</code>&#8230;&#8203;</p></div></div></section><section id="_indexes_hash"><h2>Indexes hash</h2><div class="slide-content"><div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Lié au <em>sharding</em></td></tr></table></div>
+<div class="paragraph"><p>Calculer automatiquement le <em>hash</em> d&#8217;un champ</p></div>
+<div class="imageblock"><img src="images/sharding-hash-based.svg" alt="sharding hash based"></div></div></section><section id="_propriété_additionnelles"><h2>Propriété additionnelles</h2><div class="slide-content"><div class="ulist"><ul><li><p>Index unique</p></li><li><p>Index insensible à la casse</p></li><li><p>Index "caché"</p></li><li><p>Index partiel (conditionnel)</p></li><li><p>Index épars (🫥 <code>null</code>)</p></li><li><p>Index <code>TTL</code> (Time to live)</p></li></ul></div></div></section><section id="_index_unique"><h2>Index unique</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.members.createIndex( { "user_id": 1 }, { unique: true } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.members.createIndex(
+   {
+      groupNumber: 1,
+      lastname: 1,
+      firstname: 1
+   },
+   { unique: true }
+) 👈</code></pre></div></div></div></section><section id="_case_insensitive"><h2>Case-insensitive</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.fruit.insertMany( [
+   { type: "apple" },
+   { type: "Apple" },
+   { type: "APPLE" }
+] )</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.fruit.createIndex(
+   { type: 1 },
+   { collation: { locale: 'en', strength: 2 } }
+) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.fruit.find( { type: "apple" } )
+// un seul résultat, n'utilise pas l'index
+db.fruit.find( { type: "apple" } )
+   .collation( { locale: 'en', strength: 2 } )
+// utilise l'index, 2 résultats</code></pre></div></div></div></section><section id="_la_règle_des_indexes"><h2><em>La règle</em> des indexes</h2><div class="slide-content"><div class="paragraph"><p>E.S.R.</p></div>
+<div class="olist arabic"><ol class="arabic"><li class="fragment"><p><strong>E</strong>quality</p></li><li class="fragment"><p><strong>S</strong>ort</p></li><li class="fragment"><p><strong>R</strong>ange</p></li></ol></div></div></section><section id="_exemple_3"><h2>Exemple</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.cars.find({
+   cost: { $gt: 15000 },
+   manufacturer: 'Ford'
+}).sort( { model: 1 } )</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">{ cost: 1, model: 1, manufacturer: 1 }  <i class="conum" data-value="1"></i><b>(1)</b>
+{ manufacturer: 1, model: -1, cost: 1 } <i class="conum" data-value="2"></i><b>(2)</b>
+{ cost: 1, manufacturer: 1, model: 1 }  <i class="conum" data-value="3"></i><b>(3)</b>
+{ manufacturer: 1, model: 1, cost: 1 }  <i class="conum" data-value="4"></i><b>(4)</b>
+{ manufacturer: 1, cost: -1, model: 1 } <i class="conum" data-value="5"></i><b>(5)</b>
+{ model: 1, manufacturer: 1, model: 1 } <i class="conum" data-value="6"></i><b>(6)</b></code></pre></div></div></div></section><section id="_stratégie_des_indexes"><h2>Stratégie des indexes</h2><div class="slide-content"><div class="ulist"><ul><li><p>Index adapté à chaque requête</p><div class="ulist"><ul><li><p>Une requête qui utilise seulement un index pour trouver les résultats est otpimale</p></li></ul></div></li><li><p>Requête discriminante</p><div class="ulist"><ul><li><p><code>_id</code> est très discriminant</p></li><li><p>les operateurs <code>$ne</code>, <code>$nin</code>, <code>$regex</code> ne sont jamais discriminants</p></li></ul></div></li></ul></div></div></section><section id="_requête_couvrante"><h2>Requête couvrante</h2><div class="slide-content"><div class="ulist"><ul><li><p>Tous les champs de la requêtes sont dans un index</p></li><li><p>Tous les champs retournés par la requête sont dans le <strong>même</strong> index</p></li><li><p>Aucun des champs de la requête n&#8217;est <code>null</code> (<code>{field: null}</code>)</p></li></ul></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.inventory.createIndex( { type: 1, item: 1 } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.inventory.find(
+   { type: "food", item:/^c/ },
+   { item: 1, _id: 0 }
+)</code></pre></div></div></div></section><section id="_les_indexes_vivent_en_ram"><h2>Les indexes vivent en RAM</h2><div class="slide-content"><div class="paragraph"><p>Les documents sur le disque</p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-none hljs" data-noescape="true">&gt; db.collection.totalIndexSize()
+4617080000 (4,6 Gb)</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
 <section><section id="_jour_3"><h2>Jour 3</h2></section><section id="_modélisation"><h2>Modélisation</h2></section><section id="_pipeline_daggrégation"><h2>Pipeline d&#8217;aggrégation</h2></section></section>
 <section><section id="_jour_4"><h2>Jour 4</h2></section><section id="_architecture_des_clusters"><h2>Architecture des clusters</h2></section><section id="_mise_à_léchelle"><h2>Mise à l&#8217;échelle</h2></section></section>
 <section><section id="_jour_5"><h2>Jour 5</h2></section><section id="_profilage_statistiques"><h2>Profilage &amp; Statistiques</h2></section><section id="_questions"><h2>Questions</h2></section><section id="_evaluation_diagnostic_dun_cluster"><h2>Evaluation : diagnostic d&#8217;un cluster</h2></section></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
