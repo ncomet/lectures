@@ -299,9 +299,11 @@ db.collection.createIndex( { nickname: 1 } )
 
 Indexes composés
 
+image::index-compound-key.svg[]
+
 [source, js]
 ----
-db.collection.createIndex( { age: -1, nickname: 1 } )
+db.collection.createIndex( { userId: 1, score: -1 } ) 👈
 ----
 
 === Ordre des champs !
@@ -370,6 +372,83 @@ db.students.createIndex( { test_scores: 1 } ) 👈
 [source, js]
 ----
 db.students.find({ test_scores: { $elemMatch: { $gt: 90 } } })
+----
+
+[%notitle]
+=== Attribut imbriqué
+
+.Attribut imbriqué
+[source, js]
+----
+[
+   {
+      "item": "t-shirt",
+      "stock": [
+         {
+            "size": "small",
+            "quantity": 8
+         },
+         {
+            "size": "large",
+            "quantity": 10
+         },
+       ]
+   },
+   {
+      "item": "sweater",
+      "stock": [
+         {
+            "size": "small",
+            "quantity": 4
+         },
+         {
+            "size": "large",
+            "quantity": 7
+         },
+       ]
+   }
+]
+----
+
+[source, js]
+----
+db.inventory.createIndex( { "stock.quantity": 1 } ) 👈
+----
+
+`[ 4, 7, 8, 10 ]`
+
+=== Indexes texte
+
+[source, js]
+----
+[
+   {
+     _id: 1,
+     content: "This morning I had a cup of coffee.",
+     about: "beverage",
+     keywords: [ "coffee" ]
+   },
+   {
+     _id: 2,
+     content: "My favorite flavors are strawberry and coffee",
+     about: "ice cream",
+     keywords: [ "food", "dessert" ]
+   }
+]
+----
+
+[source, js]
+----
+db.blog.createIndex( { "content": "text" } ) 👈
+----
+
+[source, js]
+----
+db.blog.find(
+   {
+      $text: { $search: "coffee" }
+   }
+)
 ----
 
 === Analyse des index
