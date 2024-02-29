@@ -468,7 +468,8 @@ ul.byline li + li {
 db.&lt;collection&gt;.dropIndexes([ "&lt;index1&gt;", "&lt;index2&gt;" ])</code></pre></div></div></div></section><section id="_exemple"><h2>Exemple</h2><div class="slide-content"><div class="paragraph"><p>Indexes simples (simple field)</p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.collection.createIndex( { age: -1 } )
 db.collection.createIndex( { nickname: 1 } )</code></pre></div></div></div></section><section id="_exemple_2"><h2>Exemple</h2><div class="slide-content"><div class="paragraph"><p>Indexes composés</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.collection.createIndex( { age: -1, nickname: 1 } )</code></pre></div></div></div></section><section id="_ordre_des_champs"><h2>Ordre des champs !</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.createIndex( { name: 1, gpa: -1 } ) 👈</code></pre></div></div>
+<div class="imageblock"><img src="images/index-compound-key.svg" alt="index compound key"></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.collection.createIndex( { userId: 1, score: -1 } ) 👈</code></pre></div></div></div></section><section id="_ordre_des_champs"><h2>Ordre des champs !</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.createIndex( { name: 1, gpa: -1 } ) 👈</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find( { name: "Alice", gpa: 3.6 } ) ✅
 db.students.find( { name: "Bob" } ) ✅</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find( { gpa: { $gt: 3.5 } } ) ❌</code></pre></div></div></div></section><section id="_ordre_des_tris"><h2>Ordre des tris !</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.leaderboard.createIndex( { score: -1, username: 1 } ) 👈</code></pre></div></div>
@@ -491,7 +492,55 @@ db.leaderboard.find().sort( { score: -1, username: -1 } ) ❌</code></pre></div>
    }
 ] )</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.createIndex( { test_scores: 1 } ) 👈</code></pre></div></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find({ test_scores: { $elemMatch: { $gt: 90 } } })</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.students.find({ test_scores: { $elemMatch: { $gt: 90 } } })</code></pre></div></div></div></section><section id="_attribut_imbriqué"><div class="slide-content"><div class="listingblock"><div class="title">Attribut imbriqué</div><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">[
+   {
+      "item": "t-shirt",
+      "stock": [
+         {
+            "size": "small",
+            "quantity": 8
+         },
+         {
+            "size": "large",
+            "quantity": 10
+         },
+       ]
+   },
+   {
+      "item": "sweater",
+      "stock": [
+         {
+            "size": "small",
+            "quantity": 4
+         },
+         {
+            "size": "large",
+            "quantity": 7
+         },
+       ]
+   }
+]</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.inventory.createIndex( { "stock.quantity": 1 } ) 👈</code></pre></div></div>
+<div class="paragraph"><p><code>[ 4, 7, 8, 10 ]</code></p></div></div></section><section id="_indexes_texte"><h2>Indexes texte</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">[
+   {
+     _id: 1,
+     content: "This morning I had a cup of coffee.",
+     about: "beverage",
+     keywords: [ "coffee" ]
+   },
+   {
+     _id: 2,
+     content: "My favorite flavors are strawberry and coffee",
+     about: "ice cream",
+     keywords: [ "food", "dessert" ]
+   }
+]</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.blog.createIndex( { "content": "text" } ) 👈</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.blog.find(
+   {
+      $text: { $search: "coffee" }
+   }
+)</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
 <section><section id="_jour_3"><h2>Jour 3</h2></section><section id="_modélisation"><h2>Modélisation</h2></section><section id="_pipeline_daggrégation"><h2>Pipeline d&#8217;aggrégation</h2></section></section>
 <section><section id="_jour_4"><h2>Jour 4</h2></section><section id="_architecture_des_clusters"><h2>Architecture des clusters</h2></section><section id="_mise_à_léchelle"><h2>Mise à l&#8217;échelle</h2></section></section>
 <section><section id="_jour_5"><h2>Jour 5</h2></section><section id="_profilage_statistiques"><h2>Profilage &amp; Statistiques</h2></section><section id="_questions"><h2>Questions</h2></section><section id="_evaluation_diagnostic_dun_cluster"><h2>Evaluation : diagnostic d&#8217;un cluster</h2></section></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
