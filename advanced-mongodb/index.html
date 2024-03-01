@@ -451,7 +451,13 @@ ul.byline li + li {
       age: 97
     }
   ]
-}</code></pre></div></div></div></section><section id="_programmation_objet_poo"><h2>Programmation Objet (POO)</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public record GoTCharacter(UUID id, String name, int age, List&lt;GoTCharacter&gt; parents) {}</code></pre></div></div></div></section><section id="_outils_binaires"><h2>Outils, binaires</h2><div class="slide-content"><div class="paragraph"><p>CLI : <code>mongosh</code></p></div>
+}</code></pre></div></div></div></section><section id="_les_opérateurs_de_requête"><h2>Les opérateurs de requête</h2><div class="slide-content"><div class="paragraph"><p><a href="https://www.mongodb.com/docs/manual/reference/operator/query/" class="bare">https://www.mongodb.com/docs/manual/reference/operator/query/</a></p></div></div></section><section id="_crud"><h2>CRUD</h2><div class="slide-content"><div class="paragraph"><p>Create</p></div>
+<div class="imageblock"><img src="images/insert.svg" alt="insert"></div>
+<div class="paragraph"><p><code>insertMany([&#8230;&#8203;], {options})</code></p></div></div></section><section id="_crud_2"><h2>CRUD</h2><div class="slide-content"><div class="paragraph"><p>Update</p></div>
+<div class="paragraph"><p><code>updateOne({filter}, {update query})</code></p></div>
+<div class="imageblock"><img src="images/update-many.svg" alt="update many"></div></div></section><section id="_crud_3"><h2>CRUD</h2><div class="slide-content"><div class="paragraph"><p>Delete</p></div>
+<div class="paragraph"><p><code>deleteOne({filter})</code></p></div>
+<div class="imageblock"><img src="images/delete.svg" alt="delete"></div></div></section><section id="_programmation_objet_poo"><h2>Programmation Objet (POO)</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public record GoTCharacter(UUID id, String name, int age, List&lt;GoTCharacter&gt; parents) {}</code></pre></div></div></div></section><section id="_outils_binaires"><h2>Outils, binaires</h2><div class="slide-content"><div class="paragraph"><p>CLI : <code>mongosh</code></p></div>
 <div class="paragraph"><p><span class="image"><img src="images/compass.png" alt="compass" width="80%"></span></p></div></div></section><section id="_td_1"><h2>TD 1</h2><div class="slide-content"><div class="paragraph"><p><a href="https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html" class="bare">https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html</a></p></div></div></section></section>
 <section><section id="_jour_2"><h2>Jour 2</h2></section><section id="_indexation"><h2>Indexation</h2><div class="slide-content"><div class="paragraph"><p>Qu&#8217;est-ce qu&#8217;un index ? 👈</p></div>
 <div class="ulist"><ul><li class="fragment"><p>📘 &#8594; 👉📖</p></li><li class="fragment"><p>Optimisation</p></li><li class="fragment"><p>⬇⏱️ exécution des requêtes</p></li></ul></div></div></section><section id="_indexation_2"><h2>Indexation</h2><div class="slide-content"><div class="paragraph"><p>Contrepartie ?</p></div>
@@ -633,9 +639,27 @@ db.fruit.find( { type: "apple" } )
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js">db.inventory.find(
    { type: "food", item:/^c/ },
    { item: 1, _id: 0 }
-)</code></pre></div></div></div></section><section id="_les_indexes_vivent_en_ram"><h2>Les indexes vivent en RAM</h2><div class="slide-content"><div class="paragraph"><p>Les documents sur le disque</p></div>
+)</code></pre></div></div></div></section><section id="_les_indexes_vivent_en_ram"><h2>Les indexes vivent en RAM</h2><div class="slide-content"><div class="paragraph"><p>Les documents parfois en RAM, surtout sur le disque</p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-none hljs" data-noescape="true">&gt; db.collection.totalIndexSize()
-4617080000 (4,6 Gb)</code></pre></div></div></div></section><section id="_analyse_des_index"><h2>Analyse des index</h2></section></section>
+4617080000 (4,6 Gb)</code></pre></div></div></div></section><section id="_analyse_des_indexes"><h2>Analyse des indexes</h2><div class="slide-content"><div class="paragraph"><p><code>explain</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js"> db.students
+   .explain() // same as .explain("queryPlanner")
+   .find({score: {$gt: 10}})</code></pre></div></div>
+<div class="imageblock"><img src="images/execplan.png" alt="execplan"></div></div></section><section id="_analyse_des_indexes_2"><h2>Analyse des indexes</h2><div class="slide-content"><div class="paragraph"><p><code>explain("executionStats")</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js"> db.students
+   .explain("executionStats")
+   .find({score: {$gt: 10}})</code></pre></div></div>
+<div class="paragraph"><p>Statistiques sur l&#8217;exécution du plan gagnant:</p></div>
+<div class="ulist"><ul><li><p>clés d&#8217;index parcourues</p></li><li><p>documents parcourus,</p></li><li><p>sens de parcours</p></li><li><p>temps d&#8217;exécution</p></li></ul></div></div></section><section id="_analyse_des_indexes_3"><h2>Analyse des indexes</h2><div class="slide-content"><div class="paragraph"><p><code>explain("executionStats")</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js"> db.students
+   .explain("allPlansExecution")
+   .find({score: {$gt: 10}})</code></pre></div></div>
+<div class="paragraph"><p>Statistiques sur l&#8217;exécution du plan gagnant et des perdants</p></div></div></section><section id="_analyse_des_indexes_4"><h2>Analyse des indexes</h2><div class="slide-content"><div class="paragraph"><p><code>hint</code></p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-js hljs" data-noescape="true" data-lang="js"> db.students
+   .explain("executionStats")
+   .find({score: {$gt: 10}})
+   .hint("age_-1_score_1")</code></pre></div></div>
+<div class="paragraph"><p>Forcer une requête à utiliser un index plutôt qu&#8217;un autre</p></div></div></section><section id="_td_2"><h2>TD 2</h2><div class="slide-content"><div class="paragraph"><p><a href="https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html" class="bare">https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html</a></p></div></div></section></section>
 <section><section id="_jour_3"><h2>Jour 3</h2></section><section id="_modélisation"><h2>Modélisation</h2></section><section id="_pipeline_daggrégation"><h2>Pipeline d&#8217;aggrégation</h2></section></section>
 <section><section id="_jour_4"><h2>Jour 4</h2></section><section id="_architecture_des_clusters"><h2>Architecture des clusters</h2></section><section id="_mise_à_léchelle"><h2>Mise à l&#8217;échelle</h2></section></section>
 <section><section id="_jour_5"><h2>Jour 5</h2></section><section id="_profilage_statistiques"><h2>Profilage &amp; Statistiques</h2></section><section id="_questions"><h2>Questions</h2></section><section id="_evaluation_diagnostic_dun_cluster"><h2>Evaluation : diagnostic d&#8217;un cluster</h2></section></section></div></div><script src="node_modules/reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
