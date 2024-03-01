@@ -207,6 +207,34 @@ MongoDB -> Syntaxe JavaScript, queries JSON
 }
 ----
 
+=== Les opérateurs de requête
+
+https://www.mongodb.com/docs/manual/reference/operator/query/
+
+=== CRUD
+
+Create
+
+image::insert.svg[]
+
+`insertMany([...], {options})`
+
+=== CRUD
+
+Update
+
+`updateOne({filter}, {update query})`
+
+image::update-many.svg[]
+
+=== CRUD
+
+Delete
+
+`deleteOne({filter})`
+
+image::delete.svg[]
+
 === Programmation Objet (POO)
 
 [source, java]
@@ -682,16 +710,74 @@ db.inventory.find(
 
 === Les indexes vivent en RAM
 
-Les documents sur le disque
+Les documents parfois en RAM, surtout sur le disque
 
 ```
 > db.collection.totalIndexSize()
 4617080000 (4,6 Gb)
 ```
 
-=== Analyse des index
+=== Analyse des indexes
 
+`explain`
 
+[source, js]
+----
+ db.students
+   .explain() // same as .explain("queryPlanner")
+   .find({score: {$gt: 10}})
+----
+
+image::execplan.png[]
+
+=== Analyse des indexes
+
+`explain("executionStats")`
+
+[source, js]
+----
+ db.students
+   .explain("executionStats")
+   .find({score: {$gt: 10}})
+----
+
+Statistiques sur l'exécution du plan gagnant:
+
+* clés d'index parcourues
+* documents parcourus,
+* sens de parcours
+* temps d'exécution
+
+=== Analyse des indexes
+
+`explain("executionStats")`
+
+[source, js]
+----
+ db.students
+   .explain("allPlansExecution")
+   .find({score: {$gt: 10}})
+----
+
+Statistiques sur l'exécution du plan gagnant et des perdants
+
+=== Analyse des indexes
+
+`hint`
+
+[source, js]
+----
+ db.students
+   .explain("executionStats")
+   .find({score: {$gt: 10}})
+   .hint("age_-1_score_1")
+----
+
+Forcer une requête à utiliser un index plutôt qu'un autre
+
+=== TD 2
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html
 
 == Jour 3
 
