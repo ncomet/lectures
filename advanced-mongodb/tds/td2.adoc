@@ -1,0 +1,72 @@
+= TD2 : Mflix
+:toc: left
+:icons: font
+:imagesdir: images
+
+image::https://i.ytimg.com/vi/GrCRM_P0sNM/mqdefault.jpg[]
+
+== MongoDB Atlas, setup
+
+Crééz un comte gratuit sur https://www.mongodb.com/fr-fr (Essayez Gratuitement)
+
+* Build a Database, Create
+
+IMPORTANT: M0 tier (gratuit), AWS provider, Paris region `eu-west-3`
+
+image::atlas-0.png[]
+
+* Username & Password (notez les bien, gestionnaire de mdp, fichier local)
+
+image::atlas-1.png[]
+
+* Authorisez votre IP locale (My Local Environment)
+
+image::atlas-2.png[]
+
+* Finissez la création du user
+
+* Allez dans Database, vérifiez que votre cluster est présent (`Cluster0`` par défaut)
+
+* Cliquez sur `Connect`
+
+image::atlas-3.png[]
+
+* choississiez `Shell`, et copiez la commande de connection `mongosh`
+
+image::atlas-4.png[]
+
+* Saisissez cette dernière dans votre invite de commande, puis saisissez votre mot de passe quand vous y êtes invités
+
+image::connect-shell.png[]
+
+* Félicitations, vous êtes connectés à votre cluster MongoDB Atlas dans le Cloud.
+
+* Générez les bases de données d'exemple que nous utiliserons par la suite, cliquez sur les points de suspension `...`, puis `Load Sample Dataset`
+
+* Laissez les collections charger, cela peut prendre un peu de temps, une fois chargées vous devriez voir:
+
+[source, bash]
+----
+$ show dbs
+sample_airbnb        52.34 MiB
+sample_analytics      9.56 MiB
+sample_geospatial     1.23 MiB
+sample_guides        40.00 KiB
+sample_mflix        110.05 MiB
+sample_restaurants    6.53 MiB
+sample_supplies       1.05 MiB
+sample_training      55.50 MiB
+sample_weatherdata    2.59 MiB
+admin               288.00 KiB
+local                 1.02 GiB
+----
+
+== Exercices notés
+
+NOTE: On utilisera la base de données `sample_mflix` et la collection `movies`
+
+NOTE: Pour toutes les questions, vous pouvez vous aider sans problème de la documentation officielle https://www.mongodb.com/docs/manual/indexes, et de tout autre lien que vous estimez utile
+
+WARNING: Renseignez votre nom et prénom lorsque vous soumettrez les réponses afin de faciliter la correction
+
+* Répondez aux questions suivantes sur quiziniere.com : TODO
