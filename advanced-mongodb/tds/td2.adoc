@@ -20,13 +20,13 @@ image::atlas-0.png[]
 
 image::atlas-1.png[]
 
-* Authorisez votre IP locale (My Local Environment)
+* Authorisez votre IP locale (My Local Environment, Add My Current IP Address)
 
 image::atlas-2.png[]
 
 * Finissez la création du user
 
-* Allez dans Database, vérifiez que votre cluster est présent (`Cluster0`` par défaut)
+* Allez dans Database, vérifiez que votre cluster est présent (`Cluster0` par défaut)
 
 * Cliquez sur `Connect`
 
