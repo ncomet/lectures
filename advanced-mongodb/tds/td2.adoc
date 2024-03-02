@@ -2,6 +2,7 @@
 :toc: left
 :icons: font
 :imagesdir: images
+:data-uri:
 
 image::https://i.ytimg.com/vi/GrCRM_P0sNM/mqdefault.jpg[]
 
