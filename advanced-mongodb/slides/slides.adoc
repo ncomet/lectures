@@ -680,6 +680,21 @@ db.cars.find({
 { model: 1, manufacturer: 1, model: 1 } <6>
 ----
 
+=== Operators, règle ESR
+
+|===
+|Equality |Sort |Range
+
+a|* `$eq`
+* `$in`
+a| `.sort(...)`
+a|* `$gt`
+* `$gte`
+* `$lt`
+* `$lte`
+* `$regexp`
+|===
+
 === Stratégie des indexes
 
 * Index adapté à chaque requête
@@ -715,6 +730,15 @@ Les documents parfois en RAM, surtout sur le disque
 ```
 > db.collection.totalIndexSize()
 4617080000 (4,6 Gb)
+```
+
+```
+> db.collection.stats().indexSizes
+{
+  _id_: 889383,
+  score_1: 123203,
+  name_1: 332322
+}
 ```
 
 === Analyse des indexes
