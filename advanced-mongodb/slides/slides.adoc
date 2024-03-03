@@ -207,10 +207,6 @@ MongoDB -> Syntaxe JavaScript, queries JSON
 }
 ----
 
-=== Les opérateurs de requête
-
-https://www.mongodb.com/docs/manual/reference/operator/query/
-
 === CRUD
 
 Create
@@ -234,6 +230,26 @@ Delete
 `deleteOne({filter})`
 
 image::delete.svg[]
+
+=== Les opérateurs de requête
+
+https://www.mongodb.com/docs/manual/reference/operator/query/[mongodb.com/docs/manual/reference/operator]
+
+=== Opérateurs de comparaison
+
+image::op-comparison.png[]
+
+=== Opérateurs logiques
+
+image::op-logical.png[]
+
+=== Opérateurs de champs
+
+image::op-fields.png[]
+
+=== Opérateurs de tableaux
+
+image::op-arrays.png[]
 
 === Programmation Objet (POO)
 
