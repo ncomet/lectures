@@ -404,9 +404,23 @@ RESULTAT:
 ----
 +++ </div></details> +++
 
+* q20
+
+Créez un nouveau Pokémon, (id `152`), nommez le comme vous le souhaitez. Vous pouvez vous inspirer d'un `find({id: 44})` pour populer le contenu.
+
+* q21
+
+Mettez à jour le nom du Pokémon `152` que vous venez de créer par `nom: "SupDinVincible"`
+
+* q22
+
+Mettez à jour le Pokémon 152 pour le rendre vraiment invincible : mettez ses `weaknesses` à `[]`, crééz lui un champ `"hps": 9999`, et rajoutez à son tableau `type` les types possibles (sans doublon), incrémentez enfin son nombre de `candy_count` de `42`.
+
+Le tout en une seule requête.
+
 NOTE: On lira la collection `bios` pour les questions suivantes
 
-* q20
+* q23
 
 Trouvez le document pour lequel le nom de l'auteur est `Hopper`
 
@@ -450,7 +464,7 @@ RESULTAT:
 ----
 +++ </div></details> +++
 
-* q21
+* q24
 
 Comptez les auteurs pour lequels un award a été décerné en 2001 (ou après)
 
@@ -465,7 +479,7 @@ RESULTAT:
 
 NOTE: On lira la collection `users` pour la question suivante
 
-* q22
+* q25
 
 Trouvez de manière distincte tous les ages des users de la collection
 
