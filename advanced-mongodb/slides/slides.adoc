@@ -823,6 +823,153 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html
 
 === Modélisation
 
+[%header,cols="1,1"] 
+|===
+|Relationnel
+|Document
+
+|On modélise les tables en fonction des _relations et cardinalités_ entre entités
+|On modélise les collections en fonction de la _façon dont on va requêter la base_
+|===
+
+=== Critères de décision
+
+. Identifier les données
+. Créer une "table de charge"
+
+[%header,cols="1,1,1,1,1"] 
+|===
+|Action
+|Requête (R/W)
+|Informations
+|Fréquence
+|Priorité
+
+|Contexte
+|Lecture/Écriture
+|Données concernées
+|N/jour, /mois, /h
+|Criticité
+|===
+
+=== Choix
+
+Encapsulation vs. Référence
+
+_Embedded vs. Reference_
+
+=== Encapsulation
+
+Dénormalisation
+
+[source, js]
+----
+db.movies.findOne()
+{
+   _id: ObjectID("ZEDS"),
+   name: "Titanic",
+   director: {               // Sous-document, pas de 
+      name: "James Cameron"  // collection dédiée
+   },                        // Relation 1-1
+   actors: [
+      {                      // Sous-document, pas de 
+         name: "Leonardo",   // collection dédiée
+         age: 35             // Relation 1-N
+      },                     //
+      {
+         name: "Kate",
+         age: 28
+      }
+   ]
+}
+----
+
+=== Encapsulation
+
+Cas d'usages
+
+* Relations de type `contient`, `1-1`
+* `1-N` relations, où les N sont vus comme des fils du parent, N == modéré
+
+Avantages
+
+* Performance en lecture
+* Récupérer les relations en une requête
+* Maj. les relations en une requête
+
+=== Encapsulation
+
+WARNING: Taille limite document 16Mo
+
+Si les données contenues changent souvent, ou sont de type "catalogue" -> Références
+
+=== Références
+
+Normalisation
+
+[source, js]
+----
+db.parts.findOne()
+{
+   _id: ObjectID("AAC"),
+   name: "Power supply",
+   price: 25,45,
+   qty: 443,
+   ..
+}
+----
+
+[source, js]
+----
+db.catalog.findOne()
+{
+   name: "Microwave",
+   parts: [ ObjectID("AAC"), ObjectID("CSR")... ],
+   code: "SADX_OPS",
+   ...
+}
+----
+
+=== Références
+
+Cas d'usages
+
+* l'encapsulation et la duplication !-> amélioration de performance en lecture / données changent trop souvent (impact de maj. trop couteux)
+* `N-N` relations, ou arboréscentes
+* Les encapsulés doivent également être requêtés fréquemment de manière isolée
+
+=== Cas particulier "inversé"
+
+Relations `1-N`, N == ⛰️
+
+[source, js]
+----
+db.hosts.findOne()
+{
+   _id : ObjectID('CCCB'),
+   name : 'goofy.example.com',
+   ipaddr : '127.66.66.66'
+}
+----
+
+[source, js]
+----
+db.logs.findOne() // logs.countDocs() == ⛰️
+{
+   time : ISODate("2024-03-11T09:42:41.382Z"),
+   message : 'cpu is on fire!',
+   host: ObjectID('CCCB') // Référence inversée vers host
+}
+----
+
+=== Règles MongoDB
+
+Privilégier l'encapsulation (_dénormalisation_) le plus possible
+
+La duplication de l'information est encouragée si elle mène à des performances ⬆️ en lecture
+
+N'utiliser le référencement (_normalisation_) que si nécessaire
+
 === Pipeline d'aggrégation
 
 == Jour 4
