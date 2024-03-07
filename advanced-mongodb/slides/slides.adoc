@@ -970,7 +970,185 @@ La duplication de l'information est encouragée si elle mène à des performance
 
 N'utiliser le référencement (_normalisation_) que si nécessaire
 
-=== Pipeline d'aggrégation
+=== Mémo modélisation
+
+. Privilégier l'encapsulation
+. Accès isolé à une entité -> pas d'encapsulation
+. Les tableaux `size > 200` -> pas d'encapsulation
+. Ne pas avoir peur des jointures applicatives^(indexées)^
+. 📈 R/W ratio -> encapsulation
+. Modéliser avec les accès aux données en tête 
+
+=== Ex : AmaDiscount
+
+On veut gérer un système de commandes d'articles
+
+++++
+<html>
+  <body>
+    <pre class="mermaid">
+      classDiagram
+         Customer "1" o-- "0..*" Order
+         Customer "1" o-- "1..*" Address : canBeShippedAt
+         Order "1" o-- "1..*" Item : contains
+         Order --> "1" Address: shipsTo
+         class Customer{
+            id: UUID
+         }
+         class Order{
+            date: Date
+            totalPrice: Double
+         }
+         class Item{
+            price: Double
+            quantity: Int
+         }
+         class Address{
+            name: String 
+         }
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
+++++
+
+=== Ex : Movinder
+
+* Nombreuses notes (1M users) + statistiques
+* On veut savoir dans quels films a joué un acteur
+
+++++
+<html>
+  <body>
+    <pre class="mermaid">
+      classDiagram
+         Movie "1" o-- "0..*" Rating
+         Movie "1..*" o-- "1..*" Actor
+         Movie "1..*"  --> "1" Country
+         class Movie{
+            id: UUID
+            name: String
+         }
+         class Country {
+            name: String
+         }
+         class Rating{
+            userId: UUID
+            swipe: Left/Right
+         }
+         class Actor{
+            id: UUID
+            name: String
+         }
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
+++++
+
+=== Ex : École, notes & examens
+
+++++
+<html>
+  <body>
+    <pre class="mermaid">
+      classDiagram
+         Student "0..*" -- "0..*" Test
+         class Student{
+            id: UUID
+            name: String
+         }
+         class Test {
+            name: String
+            year: Int
+         }
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
+++++
+
+=== Pipelines d'aggrégation
+
+[%step]
+* Grouper les valeurs de plusieurs documents
+[%step]
+* Effectuer des opérations sur ces valeurs
+[%step]
+* Faire des statistiques/BI
+
+=== Pipelines
+
+* Constituées d'un ou plusieurs `stages`
+** Filtres
+** Regroupements
+** Éclatements
+** Calculs (total, moyenne, min, max...)
+** Projections
+* Les documents en sortie de chaque `stage` sont passés au suivant
+
+=== Stages ^1/3^
+
+* *Filtres et tris*
+** `$match` (filtrer)
+** `$sort` (trier)
+
+=== Stages ^2/3^
+
+* *Modification et structure*
+** `$group` (grouper, requiert une clé `_id`)
+** `$project` (projection de certains champs)
+** `$unwind` (développer un tableau en n fois le même document)
+** `$addFields` (rajouter, générer des nouveaux champs)
+
+=== Stages ^3/3^
+
+* *Restrictions de résultats*
+** `$limit` (uniquement n premiers documents)
+** `$skip` (ignorer les n premiers)
+
+=== Stages : Documentation
+
+https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/[📖 Stages]
+
+https://www.mongodb.com/docs/manual/reference/operator/aggregation/[📖 Operateurs]
+
+=== Stages : représentation
+
+image::aggregation.png[]
+
+=== Exemple
+
+[source, js]
+----
+db.campings.aggregate([
+  { $group: { _id: "$city", total: { sum: 1 } } },
+  { $sort : { total: -1 } },
+  { $limit: 5 },
+  { $project: { _id: 0, city: "$_id", total: 1 } }
+])
+
+[
+  { "city": "ARGLÈS-SUR-MER", total: 29 },
+  { "city": "AGDE", total: 23 },
+  { "city": "VIAS", total: 20 },
+  { "city": "SAINT-JEAN-DE-MONTS", total: 20 },
+  { "city": "LES MATHES", total: 17 },
+]
+----
+
+=== `$unwind`
+
+image::unwind.png[]
 
 == Jour 4
 
