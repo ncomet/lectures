@@ -12,6 +12,10 @@
     max-height: 580px;
 }
 
+.reveal pre.mermaid {
+    text-align: center;
+}
+
 .reveal section div img {
     border: 0;
     box-shadow: none;
