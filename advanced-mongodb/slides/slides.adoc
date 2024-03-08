@@ -1150,6 +1150,10 @@ db.campings.aggregate([
 
 image::unwind.png[]
 
+=== TD 3
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td3.html
+
 == Jour 4
 
 === Architecture des clusters
