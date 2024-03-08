@@ -1,6 +1,8 @@
 = TD1 : Requêtez-les tous !
 :toc: left
 :icons: font
+:imagesdir: images
+:data-uri:
 
 ```
 

@@ -1077,7 +1077,7 @@ On veut gérer un système de commandes d'articles
 </html>
 ++++
 
-=== Pipelines d'aggrégation
+=== Pipelines d'Agrégation
 
 [%step]
 * Grouper les valeurs de plusieurs documents
