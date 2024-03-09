@@ -10,17 +10,13 @@ NOTE: Base de données `sample_mflix`, collection `movies`
 
 === q1
 
-Calculez le top 10 des réalisateurs (`directors``) par nombre de film réalisés
+Calculez le top 10 des réalisateurs (`directors`) par nombre de films réalisés
 
 === q2
 
 Calculez la note moyenne IMDB par classement (`rated`)
 
 === q3
-
-Trouvez le genre de film le plus répandu
-
-=== q4
 
 Calculez le nombre de diffusion (`runtime`) moyen des films par pays
 
