@@ -1,7 +1,54 @@
-= Travail : Modélisation
+= Travail - Modélisation, cas d'études
 :toc: left
 :icons: font
 :imagesdir: images
 :data-uri:
 
-== Test
+== Instructions
+
+NOTE: Vous pouvez travailler par groupe de deux personnes pour ce travail à faire _en dehors du cours_
+
+NOTE: On corrigera ce travail en début de 4^ème^ journée de formation
+
+IMPORTANT: Vous séparerez vos deux identifiants par un `;` lors de la soumission du résultat sur `Quiziniere.com`
+
+[cols="1,1"]
+|===
+|Nom |Identifiant
+
+|Thierno BAH
+|`jYvfdE`
+
+|Clément BOISSAT
+|`IuG7ZA`
+
+|Jérome CESSAT
+|`DqO9T3`
+
+|Laurent CHEVALIER
+|`LTUYH9`
+
+|Gilles DARJANA
+|`udJaxs`
+
+|Alexandre DUBOIS
+|`37rdmJ`
+
+|Janeka LOPP
+|`hO9UHZ`
+
+|Rowan MERCIER
+|`TscXl0`
+
+|Benjamin POMMIER
+|`Da7zhX`
+
+|Antoine RIVAULT
+|`ie9yML`
+
+|Ilker SOYTURK
+|`6vNNah`
+
+|Maximilien VERAN
+|`jXTODm`
+|===

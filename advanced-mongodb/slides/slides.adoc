@@ -1154,7 +1154,13 @@ image::unwind.png[]
 
 https://ncomet.github.io/lectures/advanced-mongodb/tds/td3.html
 
+=== Travail : Modélisation, cas d'études
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/homework-modeling.html
+
 == Jour 4
+
+=== Correction Travail Modélisation
 
 === Architecture des clusters
 
