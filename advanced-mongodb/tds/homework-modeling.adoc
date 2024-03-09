@@ -10,11 +10,11 @@ NOTE: Vous pouvez travailler par groupe de deux personnes pour ce travail à fai
 
 NOTE: On corrigera ce travail en début de 4^ème^ journée de formation
 
-IMPORTANT: Vous séparerez vos deux identifiants par un `;` lors de la soumission du résultat sur `Quiziniere.com`
+IMPORTANT: Vous séparerez vos deux pseudos par un `;` lors de la soumission du résultat sur `Quiziniere.com`
 
 [cols="1,1"]
 |===
-|Nom |Identifiant
+|Nom |Pseudo
 
 |Thierno BAH
 |`jYvfdE`

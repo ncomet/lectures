@@ -66,11 +66,11 @@ local                 1.02 GiB
 
 NOTE: Pour toutes les questions, vous pouvez vous aider sans problème de la documentation officielle https://www.mongodb.com/docs/manual/indexes, et de tout autre lien que vous estimez utile
 
-WARNING: Renseignez l'identifiant unique suivant afin de garantir votre anonymat sur `Quiziniere.com`
+IMPORTANT: Renseignez le pseudo unique suivant afin de garantir votre anonymat sur `Quiziniere.com` lorsque vous soumettrez votre copie
 
 [cols="1,1"]
 |===
-|Nom |Identifiant
+|Nom |Pseudo
 
 |Thierno BAH
 |`jYvfdE`
