@@ -54,6 +54,12 @@ image:lectra.png[width=20%] +
 
 image::confs.jpeg[]
 
+=== Votre (vos) langages préféré(s)
+
+image::css.gif[]
+
+=== Vos connaissances en BDD ❓
+
 == Jour 1
 
 === Introduction à MongoDB
@@ -902,6 +908,8 @@ Avantages
 WARNING: Taille limite document 16Mo
 
 Si les données contenues changent souvent, ou sont de type "catalogue" -> Références
+
+NOTE: On tolère de dupliquer la donnée -> ⬆️ synchronisations
 
 === Références
 
