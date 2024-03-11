@@ -67,6 +67,6 @@ NOTE: Vous pourrez tester les appels HTTP/REST de votre application à partir de
 
 == Application
 
-On va créer l'application, en respectant les pratiques DDD (Domain Driven Design)
+On intégrera le driver MongoDB `Kotlin` : https://www.mongodb.com/docs/drivers/kotlin-sync/
 
-On integrera le driver MongoDB `Kotlin`
+On va créer ensemble l'application, en respectant les pratiques DDD (Domain Driven Design)
