@@ -828,7 +828,15 @@ Forcer une requête à utiliser un index plutôt qu'un autre
 
 === TD 2
 
+Les indexes
+
 https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html
+
+=== TD 2-1
+
+Application parkings
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td2-1.html
 
 == Jour 3
 

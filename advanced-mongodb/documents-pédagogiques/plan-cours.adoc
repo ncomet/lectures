@@ -64,11 +64,11 @@ Les apprenants, à l'issue de la formation seront à même de :
 
 |3
 |3h
-|Les différents types d'index, leurs implications, bonnes pratiques.
+|Les différents types d'index, leurs implications, bonnes pratiques. Analyse des index: `explain`, `hint`. Comment interpréter et optimiser.
 
 |4
 |3h
-|Analyse des index: `explain`, `hint`. Comment interpréter et optimiser.
+|TD en groupe : Application backend de mise en pratique
 
 |5
 |3h
@@ -99,7 +99,7 @@ Les apprenants, à l'issue de la formation seront à même de :
 
 Différents moyens mis en œuvre pour s'assurer de la bonne progression des apprenants sous la forme d'évaluation formative:
 
-* TDs pendant certaines sessions (requêtage, index, modélisation, architecture des clusters)
+* TDs pendant certaines sessions (requêtage, index, application utilisant un driver, modélisation, architecture des clusters)
 
 Deux évaluations sommatives pour certifier les compétences acquises des apprenants:
 

@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: Gestion de places de parking API
+  description: API pour gérer les places de parking
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /parkings:
+    get:
+      summary: Récupérer la liste de tous les parkings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Parking'
+    post:
+      summary: Créer un nouveau parking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewParking'
+      responses:
+        '201':
+          description: Parking créé avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parking'
+  /parkings/{id}:
+    get:
+      summary: Récupérer les détails d'un parking spécifique
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Identifiant du parking à récupérer
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parking'
+        '404':
+          description: Parking non trouvé
+    put:
+      summary: Mettre à jour le statut d'une place de parking
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Identifiant de la place de parking à mettre à jour
+          schema:
+            type: string
+        - in: query
+          name: status
+          required: true
+          description: Nouveau statut de la place de parking (libre ou occupée)
+          schema:
+            type: string
+            enum: [free, occupied]
+      responses:
+        '200':
+          description: Statut de la place de parking mis à jour avec succès
+        '404':
+          description: Place de parking non trouvée
+components:
+  schemas:
+    Parking:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Identifiant unique du parking
+        name:
+          type: string
+          description: Nom du parking
+        location:
+          type: string
+          description: Emplacement du parking
+        spots:
+          type: array
+          description: Liste des places de parking disponibles dans ce parking
+          items:
+            $ref: '#/components/schemas/ParkingSpot'
+    ParkingSpot:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Identifiant unique de la place de parking
+        number:
+          type: integer
+          description: Numéro de la place de parking
+        status:
+          type: string
+          enum: [free, occupied]
+          description: Statut de la place de parking (libre ou occupée)
+    NewParking:
+      type: object
+      required:
+        - name
+        - location
+      properties:
+        name:
+          type: string
+          description: Nom du parking
+        location:
+          type: string
+          description: Emplacement du parking

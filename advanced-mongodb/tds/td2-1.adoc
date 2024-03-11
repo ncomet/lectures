@@ -1,0 +1,72 @@
+= TD2-1 : Parkings SupDeVinci
+:toc: left
+:icons: font
+:imagesdir: images
+:data-uri:
+:numbered:
+
+== Technologies
+
+* Kotlin
+* Ktor (serveur d'application, routeur HTTP)
+* HTTP (API REST)
+* MongoDB Kotlin driver
+
+== Application
+
+On veut créer une application qui gère plusieurs parkings, ainsi que leurs places. Cette application tracera l'occupation des places en temps réel.
+
+Elle servira des endpoints HTTP.
+
+=== Bonus
+
+Frontend techno libre pour faire des appels REST/HTTP vers ce backend.
+
+== Prérequis
+
+* Téléchargez l'IDE IntelliJ Community edition https://www.jetbrains.com/idea/download
+
+
+== Bootstrap de l'app
+
+* Générez un projet Ktor template avec https://start.ktor.io
+
+image::ktor1.png[]
+
+* Ajoutez les plugins suivants:
+** Routing
+** kotlinx.serialization
+** Swagger
+
+image::ktor2.png[]
+
+* Générez le projet
+** Extrayez le `.zip` dans le workspace de votre choix
+** Ouvrez le projet (Open) dans IntelliJ Community IDE
+** Remplacez le fichier `src/main/resources/openapi/documentation.yaml` par le fichier `parkings.yaml` disponible sur `PEPAL`
+
+NOTE: Testez que votre application se builde et lance bien :
+
+[source, bash]
+----
+./gradlew build
+----
+
+[source, bash]
+----
+./gradlew run
+----
+
+NOTE: Vous pouvez aussi lancer l'application par les mêmes tâches gradle ici :
+
+image::rungradle.png[]
+
+* Accédez à http://localhost:8080/openapi pour vérifier que votre documentation d'API est bien exposée
+
+NOTE: Vous pourrez tester les appels HTTP/REST de votre application à partir de cette page
+
+== Application
+
+On va créer l'application, en respectant les pratiques DDD (Domain Driven Design)
+
+On integrera le driver MongoDB `Kotlin`
