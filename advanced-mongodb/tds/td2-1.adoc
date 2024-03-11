@@ -31,14 +31,14 @@ Frontend techno libre pour faire des appels REST/HTTP vers ce backend.
 
 * Générez un projet Ktor template avec https://start.ktor.io
 
-image::ktor1.png[]
+image::ktor1.png[width=50%]
 
 * Ajoutez les plugins suivants:
 ** Routing
 ** kotlinx.serialization
 ** Swagger
 
-image::ktor2.png[]
+image::ktor2.png[width=40%]
 
 * Générez le projet
 ** Extrayez le `.zip` dans le workspace de votre choix
@@ -59,7 +59,7 @@ NOTE: Testez que votre application se builde et lance bien :
 
 NOTE: Vous pouvez aussi lancer l'application par les mêmes tâches gradle ici :
 
-image::rungradle.png[]
+image::rungradle.png[width=60%]
 
 * Accédez à http://localhost:8080/openapi pour vérifier que votre documentation d'API est bien exposée
 
