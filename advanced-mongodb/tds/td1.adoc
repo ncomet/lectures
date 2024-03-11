@@ -89,6 +89,8 @@ https://www.mongodb.com/try/download/compass
 $ mongosh
 ```
 
+IMPORTANT: Si la connection fonctionne, vous pouvez quitter (deux fois CTRL+C)
+
 == Import des données
 
 NOTE: Par défaut, les données sont importées dans une base appelée `test`. On peut surcharger en passant l'option `-d` (ou `--database`) à `mongoimport`, c'est obligatoire pour `mongorestore`
