@@ -274,6 +274,10 @@ image:compass.png[width=80%]
 
 https://ncomet.github.io/lectures/advanced-mongodb/tds/td1.html
 
+=== TD 1-1
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td1-1.html
+
 == Jour 2
 
 === Indexation
