@@ -24,8 +24,8 @@ Frontend techno libre pour faire des appels REST/HTTP vers ce backend.
 
 == Prérequis
 
-* Téléchargez l'IDE IntelliJ Community edition https://www.jetbrains.com/idea/download
-
+* Java JDK 21 https://adoptium.net/fr/ (si vous n'en avez pas d'installé)
+* Téléchargez & installez l'IDE IntelliJ Community edition https://www.jetbrains.com/idea/download
 
 == Bootstrap de l'app
 
