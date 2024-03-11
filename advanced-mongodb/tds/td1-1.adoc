@@ -1,0 +1,155 @@
+= TD1-1 : Restaurants
+:icons: font
+:toc: left
+
+== db sample_restaurants, collection restaurants
+
+Utilisez la base de données `sample_restaurants`, collection `restaurants` pour les exercices suivants.
+
+== Exercices
+
+1. Écrivez une requête MongoDB pour afficher tous les documents dans les restaurants de collection.
+
+2. Écrivez une requête MongoDB pour afficher les champs restaurant_id, nom, arrondissement et cuisine pour tous les documents de la collection restaurant.
+
+
+3. Écrivez une requête MongoDB pour afficher les champs restaurant_id, nom, arrondissement et cuisine, mais excluez le champ _id pour tous les documents de la collection restaurant.
+
+
+4. Écrivez une requête MongoDB pour afficher les champs restaurant_id, nom, arrondissement et code postal, mais excluez le champ _id pour tous les documents de la collection restaurant.
+
+
+5. Écrivez une requête MongoDB pour afficher tous les restaurants qui se trouvent dans l'arrondissement du Bronx.
+
+
+6. Écrivez une requête MongoDB pour afficher les 5 premiers restaurants de l'arrondissement du Bronx.
+
+
+7. Écrivez une requête MongoDB pour afficher les 5 prochains restaurants après avoir ignoré les 5 premiers qui se trouvent dans l'arrondissement du Bronx.
+
+8. Écrivez une requête MongoDB pour trouver les restaurants qui ont obtenu un score supérieur à 90.
+
+
+9. Écrivez une requête MongoDB pour trouver les restaurants qui ont obtenu un score supérieur à 80 mais inférieur à 100.
+
+10. Écrivez une requête MongoDB pour trouver les restaurants situés à une latitude inférieure à -95,754168.
+
+11. Écrivez une requête MongoDB pour trouver les restaurants qui ne préparent aucune cuisine « américaine » et dont la note est supérieure à 70 et la latitude inférieure à -65,754168.
+
+
+12. Écrivez une requête MongoDB pour trouver les restaurants qui ne préparent aucune cuisine « américaine » et ont obtenu un score supérieur à 70 et situés dans une longitude inférieure à -65,754168.
+Remarque : effectuez cette requête sans utiliser l'opérateur $and.
+
+
+13. Écrivez une requête MongoDB pour trouver les restaurants qui ne préparent aucune cuisine « américaine » et qui ont obtenu la note « A » n'appartenant pas à l'arrondissement de Brooklyn. Le document doit être affiché selon la cuisine par ordre décroissant.
+
+
+14. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, le quartier et la cuisine des restaurants qui contiennent « Wil » comme trois premières lettres de leur nom.
+
+
+15. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, le quartier et la cuisine des restaurants qui contiennent « ces » comme trois dernières lettres de leur nom.
+
+
+16. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, le quartier et la cuisine des restaurants qui contiennent « Reg » sous forme de trois lettres quelque part dans leur nom.
+
+
+17. Écrivez une requête MongoDB pour trouver les restaurants appartenant à l'arrondissement du Bronx et préparant des plats américains ou chinois.
+
+
+18. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, l'arrondissement et la cuisine des restaurants qui appartiennent à l'arrondissement de Staten Island, du Queens ou du Bronxor Brooklyn.
+
+
+19. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, l'arrondissement et la cuisine des restaurants qui n'appartiennent pas à l'arrondissement de Staten Island, du Queens ou du Bronxor Brooklyn.
+
+
+20. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, le quartier et la cuisine des restaurants qui ont obtenu un score ne dépassant pas 10.
+
+
+21. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, l'arrondissement et la cuisine des restaurants qui ont préparé des plats sauf « Américain » et « Chinois » ou dont le nom commence par la lettre « Wil ».
+
+
+22. Écrivez une requête MongoDB pour trouver l'identifiant, le nom et les notes du restaurant qui ont obtenu la note « A » et obtenu 11 sur un ISODate « 2014-08-11T00:00:00Z » parmi de nombreuses dates d'enquête. .
+
+
+23. Écrivez une requête MongoDB pour trouver l'identifiant, le nom et les notes du restaurant pour lesquels le 2ème élément du tableau de notes contient une note de « A » et un score de 9 sur un ISODate « 2014-08-11T00:00:00Z ».
+
+
+24. Écrivez une requête MongoDB pour trouver l'identifiant du restaurant, le nom, l'adresse et l'emplacement géographique des restaurants où le 2ème élément du tableau de coordonnées contient une valeur supérieure à 42 et jusqu'à 52.
+
+
+25. Écrivez une requête MongoDB pour classer le nom des restaurants par ordre croissant avec toutes les colonnes.
+
+
+26. Écrivez une requête MongoDB pour classer le nom des restaurants par ordre décroissant avec toutes les colonnes.
+
+
+27. Écrivez une requête MongoDB pour classer le nom de la cuisine par ordre croissant et pour cette même cuisine, le quartier doit être par ordre décroissant.
+
+
+28. Écrivez une requête MongoDB pour savoir si toutes les adresses contiennent la rue ou non.
+
+
+29. Écrivez une requête MongoDB qui sélectionnera tous les documents de la collection de restaurants où la valeur du champ de coordonnées est Double.
+
+
+30. Écrivez une requête MongoDB qui sélectionnera l'identifiant du restaurant, le nom et les notes de ces restaurants et renverra 0 comme reste après avoir divisé le score par 7.
+
+
+31. Écrivez une requête MongoDB pour trouver le nom du restaurant, l'arrondissement, la longitude, l'attitude et la cuisine des restaurants qui contiennent « mon » sous forme de trois lettres quelque part dans leur nom.
+
+
+32. Écrivez une requête MongoDB pour trouver le nom du restaurant, l'arrondissement, la longitude, la latitude et la cuisine des restaurants qui contiennent « Mad » comme trois premières lettres de son nom.
+
+
+33. Écrivez une requête MongoDB pour trouver les restaurants qui ont au moins une note avec un score inférieur à 5.
+
+
+34. Écrivez une requête MongoDB pour trouver les restaurants qui ont au moins une note avec un score inférieur à 5 et qui sont situés dans l'arrondissement de Manhattan.
+
+
+35. Écrivez une requête MongoDB pour trouver les restaurants qui ont au moins une note avec un score inférieur à 5 et qui sont situés dans l'arrondissement de Manhattan ou de Brooklyn.
+
+
+36. Écrivez une requête MongoDB pour trouver les restaurants qui ont au moins une note avec un score inférieur à 5 et qui sont situés dans l'arrondissement de Manhattan ou de Brooklyn et dont la cuisine n'est pas américaine.
+
+
+37. Écrivez une requête MongoDB pour trouver les restaurants qui ont au moins une note avec un score inférieur à 5 et qui sont situés dans l'arrondissement de Manhattan ou de Brooklyn et dont la cuisine n'est ni américaine ni chinoise.
+
+
+38. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 et une note avec un score de 6.
+
+
+39. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 et une note avec un score de 6 et qui sont situés dans l'arrondissement de Manhattan.
+
+
+40. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 et une note avec un score de 6 et qui sont situés dans l'arrondissement de Manhattan ou de Brooklyn.
+
+
+41. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 et une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan ou de Brooklyn, et leur cuisine n'est pas américaine.
+
+
+42. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 et une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan ou de Brooklyn, et leur cuisine n'est ni américaine ni chinoise.
+
+
+43. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 ou une note avec un score de 6.
+
+
+44. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 ou une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan.
+
+
+45. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 ou une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan ou de Brooklyn.
+
+
+46. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 ou une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan ou de Brooklyn, et leur cuisine n'est pas américaine.
+
+
+47. Écrivez une requête MongoDB pour trouver les restaurants qui ont une note avec un score de 2 ou une note avec un score de 6 et sont situés dans l'arrondissement de Manhattan ou de Brooklyn, et leur cuisine n'est ni américaine ni chinoise.
+
+
+48. Écrivez une requête MongoDB pour trouver les restaurants dont toutes les notes ont un score supérieur à 5.
+
+
+49. Écrivez une requête MongoDB pour trouver les restaurants dont toutes les notes sont supérieures à 5 et qui sont situés dans l'arrondissement de Manhattan.
+
+
+50. Écrivez une requête MongoDB pour trouver les restaurants dont toutes les notes sont supérieures à 5 et qui sont situés dans l'arrondissement de Manhattan ou de Brooklyn.
