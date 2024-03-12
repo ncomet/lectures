@@ -834,7 +834,7 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html
 
 === Architectures Hexagonales, DDD
 
-
+https://ncomet.github.io/lectures/hexagonal-architecture
 
 === TD 2-1
 
