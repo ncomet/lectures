@@ -1,0 +1,22 @@
+.line-through{text-decoration:line-through}
+
+.reveal h1 {
+    text-transform: none;
+}
+
+.reveal h2 {
+    text-transform: none;
+}
+
+.reveal pre code {
+    max-height: 580px;
+}
+
+.reveal pre.mermaid {
+    text-align: center;
+}
+
+.reveal section div img {
+    border: 0;
+    box-shadow: none;
+}

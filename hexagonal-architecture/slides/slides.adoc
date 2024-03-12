@@ -1,0 +1,182 @@
+= Architecture hexagonale
+:imagesdir: images
+:source-highlighter: highlightjs
+:revealjs_theme: white
+:revealjs_history: true
+:revealjs_slideNumber: true
+:customcss: custom.css
+:icons: font
+
+== Origine
+
+Alistair Cockburn dans les années 2000
+
+http://alistair.cockburn.us/Hexagonal+architecture
+
+Aussi appelée :
+
+* Ports & Adapters
+* Clean Architecture (Uncle Bob)
+* Onion Architecture (Jeffrey Palermo)
+
+== Objectif
+
+* Permettre à une application d'être à la fois guidée par 
+** les utilisateurs
+** les programmes
+** les tests automatiques
+
+et 
+
+* être développée et testée isolément de ses éventuels périphériques et bases de données.
+
+== En image
+
+image::hexa-netflix.png[width=70%]
+
+== Pour résoudre quels problèmes 
+
+* Des choix techniques précipités
+* Un immobilisme technique
+* Une faible testabilité de la logique métier
+
+[quote]
+Une architecture pour faire des applications évolutives et pérennes
+
+== Architecture vue par les classes
+
+image::hexagonal.jpg[width=50%]
+
+[quote]
+`Inside` (Business Logic) ne doit pas dépendre de `Outside` (Technical Stuff)
+
+== Design patterns
+
+* Dependency Inversion (Dependency Injection) 
+* Adapter
+* DTO (Data Transfer Object)
+** mapping outside/inside
+
+== Ports & Adapters
+
+image::hexa-driving-driven.png[width=70%]
+
+== Primary & Secondary Ports
+
+.Primary port (Driving)
+
+Les ports qui exposent une API pour le module
+
+* Exemple :
+** HTTP pour une API REST
+** AMQP pour une API de messaging
+
+== Primary & Secondary Ports
+
+.Secondary port (Driven)
+
+* Les ports qui communiquent avec un système externe pour réaliser un cas d'utilisation
+* Exemple :
+** SQL pour une base de donnée
+** HTTP pour un système d'authentification
+
+== Domain Driven Design
+
+[quote]
+L'architecture hexagonale est une façon d'implémenter le domain driven design.
+
+image::ddd-book.jpg[width=30%]
+
+== Domain
+
+* Le domaine permet de modéliser le métier de l'application
+* Il utilise le `Ubiquitous Language`
+** langage partagé entre les développeurs et les architectes fonctionnels
+* Il est défini dans un `Bounded Context`
+* Il est indépendant de toute problématique technique
+
+== Entity
+
+* Une entité représente _quelque chose_ dans le model
+* Elle a un cycle de vie, peut être identifiée de manière unique
+
+[options="step"]
+* Concrêtement, elle ne doit pas être un POJO anémique
+** pas de getter/setter
+** pas possible d'avoir un état incohérent (constructeur métier)
+** elle _code_ le métier, elle peut être testée !
+
+== Value Object
+
+* Un ValueObject réprésente _quelque chose_ qui n'a pas d'unicité
+* Les Value Objects sont égaux par leurs valeurs
+
+[source, java]
+----
+new Authoring("root", "09/05/2017")
+    .equals(new Authoring("root", "09/05/2017"));
+----
+
+== DDD et architecture hexagonale
+
+image::ddd-hexagonal.png[]
+
+== Application Service
+
+image::ddd-hexagonal.png[width=30%]
+
+* Les services d'application représentents des cas d'utilisation.
+** orchestration d'actions sur le domaine
+
+* Les services d'application ne peuvent pas s'appeler entre eux.
+
+== Domain Service
+
+image::ddd-hexagonal.png[width=30%]
+
+* Les services du domaine permettent de factoriser des règles métier entre des services d'application.
+
+* Ils implémentent tout ce qui ne peut pas être modélisé dans le domaine.
+
+== Interfaces
+
+* Il est nécessaire d'identifier la couche d'exposition de notre application 
+** API REST, Messaging
+
+* Les interfaces sont des adaptateurs sur le domaine :
+** Port `HTTP` avec comme adaptateur un framework RESTful
+** Port `AMQP` avec comme adaptateur un client RabbitMq
+
+== Infrastructure
+
+[quote]
+Le but de notre métier est de minimiser la compléxité technique par rapport à la complexité fonctionelle
+
+* Toute la _tuyauterie_ liée aux librairies et aux dépendances externes doit être isolée, et ne doit pas _polluer_ le code métier
+
+== Repository : Domain et Infrastructure
+
+* Ce n'est pas un DAO
+* C'est un entrepôt de donnée : `Persistence Ignorance`
+* Interface dans le domain -> Implémentation dans l'infrastructure
+** Port `SQL` avec comme adaptateur un driver (ex: JDBC)
+
+== Infrastructure Service
+
+* Les services d'infrastructure représentent les interactions avec les systèmes externes.
+* Interface dans le domain -> Implémentation dans l'infrastructure
+* Exemples :
+** Authentification
+** Publication d'évènements
+** Appel à un autre système externe par son API REST
+
+== Architecture DDD hexagonale vue par les packages
+
+image::layers.jpg[]
+
+== Pour aller plus loin
+
+.Devoxx 15, https://www.youtube.com/watch?v=wZ7cxcU4iPE
+video::wZ7cxcU4iPE[youtube]
+
+http://blog.xebia.fr/2016/03/16/perennisez-votre-metier-avec-larchitecture-hexagonale/
