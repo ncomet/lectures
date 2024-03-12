@@ -832,6 +832,10 @@ Les indexes
 
 https://ncomet.github.io/lectures/advanced-mongodb/tds/td2.html
 
+=== Architectures Hexagonales, DDD
+
+
+
 === TD 2-1
 
 Application parkings

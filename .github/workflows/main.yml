@@ -32,6 +32,7 @@ jobs:
               <h1>Lectures</h1>
               <ul>
                 <li><a href="/lectures/advanced-mongodb">advanced-mongodb</a></li>
+                <li><a href="/lectures/hexagonal-architecture">hexagonal-architecture</a></li>
               </ul>
             </body>
           </html>

@@ -68,7 +68,7 @@ Les apprenants, à l'issue de la formation seront à même de :
 
 |4
 |3h
-|TD en groupe : Application backend de mise en pratique
+|TD en groupe : Rapide intro : Artchitectures Hexagonales, Application backend de mise en pratique avec MongoDB
 
 |5
 |3h
