@@ -1189,6 +1189,23 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/homework-modeling.html
 
 === Architecture des clusters
 
+=== Cluster
+
+taille(Indexes) + taille(Working Set) doivent pouvoir vivre en RAM.
+
+WARNING: Working Set != Data Set
+
+=== Cluster
+
+Règle: 20% taille(Data Set) = ~RAM nécessaire
+
+100Go données -> 20Go RAM.
+Indexes ~5Go, 15Go libres pour Working Set
+
+=== Atlas
+
+image::atlas-dedicated.png[width=70%]
+
 === Mise à l'échelle
 
 == Jour 5
@@ -1197,4 +1214,6 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/homework-modeling.html
 
 === Questions
 
-=== Evaluation : diagnostic d'un cluster
+=== Projet
+
+Application `Kotlin` `Ktor` `MongoDB` gestion des parkings
