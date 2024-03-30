@@ -1189,6 +1189,51 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/homework-modeling.html
 
 === Architecture des clusters
 
+https://www.mongodb.com/basics/horizontal-vs-vertical-scaling
+
+=== Catégories Atlas
+
+* Clusters partagés
+* Clusters dédiés
+* Instances Serverless
+
+=== Serverless
+
+* Configuration minimum
+* Mono region
+* "Élastique" pas de scale up/down
+* Pay As You Go
+
+WARNING: https://www.mongodb.com/docs/atlas/reference/serverless-instance-limitations/[Limitations]
+
+=== Serverless ?
+
+À utiliser
+
+* En prod
+** Charge aléatoire
+** Pics de consommation
+* En dev/test
+** Application non stabilisée (phase de recette)
+
+=== Cluster partagé
+
+A utiliser dans les environnements de dev, en phase de test (`M0`, `M2` & `M5`)
+
+* Un seul cluster `M0` par projet
+* Mémoire fixe
+* 3 Réplicas max
+* Pas de backups
+
+=== Cluster
+
+A privilégier lorsque vous connaissez bien vos usages, vos patterns d'accès, votre volume de données `Data Set` + `Working Set`
+
+* Configuration avancée
+* Multi-cloud & multi-région
+* Auto-scaling (pas instantanné)
+* Coût /h fixe
+
 === Cluster
 
 taille(Indexes) + taille(Working Set) doivent pouvoir vivre en RAM.
@@ -1208,12 +1253,86 @@ image::atlas-dedicated.png[width=70%]
 
 === Mise à l'échelle
 
+* ↕️ Verticale (choix hardware, catalogue)
+* ↔️ Horizontale 
+
+=== ↔️ Réplication vs Sharding
+
+IMPORTANT: Décider l'un ou l'autre (choix irréversible dans Atlas)
+
+[transition=none]
+=== Réplication
+
+image::replica-set.png[]
+
+[transition=none]
+=== Réplication
+
+image::replica-set1.png[]
+
+[transition=none]
+=== Réplication
+
+image::replica-set2.png[]
+
+=== Sharding
+
+image::sharding.png[]
+
+=== Sharding
+
+Par hash
+
+image::sharding-hash-based.svg[]
+
+=== Sharding
+
+Par plage
+
+image::sharding-range-based.svg[]
+
+=== Choix
+
+. Volume des données et croissance => Sharding
+. Performance
+* 🏔️ Lectures => Réplication
+* 🏔️ Lectures/🏔️ Écritures => Sharding
+. H.A. Haute dispo => Réplication (Sharding + Réplication 💶📈)
+. Distribution géographique
+* Uniforme => Réplication, Monotone => Sharding
+
+=== Choix
+
+WARNING: Sharding
+
+Complexité opératoire:
+
+* Management des clés de sharding
+* Balancers
+* Migration des chunks
+
+Coût plus élevé
+
+* Plus de hardware en général
+
+=== Résumé
+
+Sharding:: Mise à l'échelle ↔️, 🏔️ Data ⚡️ Débit L/E
+
+Réplication:: Débit ⚡️ L, Tolérance aux fautes, HA
+
+Parfois mix des deux !
+
 == Jour 5
 
 === Profilage & Statistiques
+
+
 
 === Questions
 
 === Projet
 
 Application `Kotlin` `Ktor` `MongoDB` gestion des parkings
+
+https://github.com/ncomet/ktor-parkings

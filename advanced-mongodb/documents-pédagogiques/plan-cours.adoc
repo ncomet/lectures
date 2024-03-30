@@ -80,7 +80,7 @@ Les apprenants, à l'issue de la formation seront à même de :
 
 |7
 |3h
-|Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
+|Correction travail modélisation, Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
 
 |8
 |3h
