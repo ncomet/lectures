@@ -1231,7 +1231,7 @@ A privilégier lorsque vous connaissez bien vos usages, vos patterns d'accès, v
 
 * Configuration avancée
 * Multi-cloud & multi-région
-* Auto-scaling (pas instantanné)
+* Auto-scaling (pas instantanné) => saisonnalité
 * Coût /h fixe
 
 === Cluster
@@ -1251,6 +1251,10 @@ Indexes ~5Go, 15Go libres pour Working Set
 
 image::atlas-dedicated.png[width=70%]
 
+=== TD4
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td4.html
+
 === Mise à l'échelle
 
 * ↕️ Verticale (choix hardware, catalogue)
@@ -1258,7 +1262,7 @@ image::atlas-dedicated.png[width=70%]
 
 === ↔️ Réplication vs Sharding
 
-IMPORTANT: Décider l'un ou l'autre (choix irréversible dans Atlas)
+IMPORTANT: Décider l'un ou l'autre (réplication -> sharding : choix unidirectionnel dans Atlas)
 
 [transition=none]
 === Réplication
@@ -1281,15 +1285,38 @@ image::sharding.png[]
 
 === Sharding
 
-Par hash
-
-image::sharding-hash-based.svg[]
-
-=== Sharding
-
 Par plage
 
 image::sharding-range-based.svg[]
+
+=== Choix d'une clé de sharding
+
+* Se fait par collection
+* Cette clé de sharding doit faire partie de toutes les requêtes
+
+=== Comment choisir ?
+
+* Cardinalité 🔢
+* Fréquence 📈
+* Caractére monotone 🍁
+
+=== Cardinalité
+
+image::sharded-cluster-ranged-distribution-low-cardinal.svg[]
+
+=== Fréquence
+
+image::sharded-cluster-ranged-distribution-frequency.svg[]
+
+=== Monotone
+
+image::sharded-cluster-monotonic-distribution.svg[]
+
+=== Sharding
+
+Par hash
+
+image::sharding-hash-based.svg[]
 
 === Choix
 
@@ -1323,11 +1350,42 @@ Réplication:: Débit ⚡️ L, Tolérance aux fautes, HA
 
 Parfois mix des deux !
 
+=== TD 5
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td5.html
+
 == Jour 5
 
 === Profilage & Statistiques
 
+=== Mongotop
 
+[source, bash]
+----
+2019-04-29T15:35:27.785-0400 connected to: 127.0.0.1
+                    ns    total    read    write    2019-04-29T15:35:57-04:00
+    admin.system.roles      0ms     0ms      0ms
+    admin.system.users      0ms     0ms      0ms
+  admin.system.version      0ms     0ms      0ms
+config.system.sessions      0ms     0ms      0ms
+     local.startup_log      0ms     0ms      0ms
+  local.system.replset      0ms     0ms      0ms
+----
+
+=== Mongostat
+
+[source, bash]
+----
+insert query update delete getmore command dirty used flushes vsize  res qrw arw net_in net_out conn                time
+   991    *0     *0     *0       0     2|0  3.4% 4.5%       0 2.90G 297M 0|0 0|0  12.9m   84.2k    2 Oct  6 09:45:37.478
+   989    *0     *0     *0       0     2|0  3.6% 4.7%       0 2.91G 310M 0|0 0|0  12.9m   84.1k    2 Oct  6 09:45:38.476
+   988    *0     *0     *0       0     1|0  3.7% 4.8%       0 2.92G 323M 0|0 0|0  12.8m   83.8k    2 Oct  6 09:45:39.481
+   976    *0     *0     *0       0     2|0  3.9% 5.0%       0 2.94G 335M 0|0 0|0  12.7m   83.7k    2 Oct  6 09:45:40.476
+----
+
+=== TD 6
+
+https://ncomet.github.io/lectures/advanced-mongodb/tds/td6.html
 
 === Questions
 

@@ -1,0 +1,56 @@
+= TD4 : Architecture des clusters
+:toc: left
+:icons: font
+:imagesdir: images
+:data-uri:
+
+== Exercices notés
+
+NOTE: Pour toutes les questions, vous pouvez vous aider sans problème de la documentation officielle https://www.mongodb.com/docs/manual/indexes, et de tout autre lien que vous estimez utile
+
+IMPORTANT: Renseignez le pseudo unique suivant afin de garantir votre anonymat sur `Quiziniere.com` lorsque vous soumettrez votre copie
+
+[cols="1,1"]
+|===
+|Nom |Pseudo
+
+|Thierno BAH
+|`jYvfdE`
+
+|Clément BOISSAT
+|`IuG7ZA`
+
+|Jérome CESSAT
+|`DqO9T3`
+
+|Laurent CHEVALIER
+|`LTUYH9`
+
+|Gilles DARJANA
+|`udJaxs`
+
+|Alexandre DUBOIS
+|`37rdmJ`
+
+|Janeka LOPP
+|`hO9UHZ`
+
+|Rowan MERCIER
+|`TscXl0`
+
+|Benjamin POMMIER
+|`Da7zhX`
+
+|Antoine RIVAULT
+|`ie9yML`
+
+|Ilker SOYTURK
+|`6vNNah`
+
+|Maximilien VERAN
+|`jXTODm`
+|=== 
+
+* Répondez aux questions suivantes *notées* sur `Quiziniere.com` avec le lien fourni lors du cours :
+
+TODO
