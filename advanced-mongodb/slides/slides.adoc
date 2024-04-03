@@ -1389,6 +1389,10 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/td6.html
 
 === Questions
 
+=== Microservices Testing
+
+https://martinfowler.com/articles/microservice-testing/#testing-component-in-process-diagram
+
 === Projet
 
 Application `Kotlin` `Ktor` `MongoDB` gestion des parkings
