@@ -1391,7 +1391,17 @@ https://ncomet.github.io/lectures/advanced-mongodb/tds/td6.html
 
 === Microservices Testing
 
+Tests de composant :
+
 https://martinfowler.com/articles/microservice-testing/#testing-component-in-process-diagram
+
+Pyramide de tests :
+
+https://martinfowler.com/articles/microservice-testing/#conclusion-test-pyramid
+
+Résumé des différents niveau de tests :
+
+https://martinfowler.com/articles/microservice-testing/#conclusion-summary
 
 === Projet
 
