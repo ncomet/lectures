@@ -1407,4 +1407,4 @@ https://martinfowler.com/articles/microservice-testing/#conclusion-summary
 
 Application `Kotlin` `Ktor` `MongoDB` gestion des parkings
 
-https://github.com/ncomet/ktor-parkings
+Retrouvez sur PEPAL la solution `ktor-parkings-solution-mongodb.zip`
