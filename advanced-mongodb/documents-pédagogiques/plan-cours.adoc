@@ -2,7 +2,7 @@
 Nicolas COMET <nicolas.comet@gmail.com>
 :lecture: MongoDB, Optimisations NoSQL
 :level: M2 Développement
-:year: 2023-2024
+:year: 2024-2025
 :numbered:
 
 [.metadata]
