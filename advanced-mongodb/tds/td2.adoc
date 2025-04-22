@@ -72,41 +72,68 @@ IMPORTANT: Renseignez le pseudo unique suivant afin de garantir votre anonymat s
 |===
 |Nom |Pseudo
 
-|Thierno BAH
+|AFIRI Driss
 |`jYvfdE`
 
-|Clément BOISSAT
+|BERTHELOT Leane
 |`IuG7ZA`
 
-|Jérome CESSAT
+|CHARASSON Gabin
 |`DqO9T3`
 
-|Laurent CHEVALIER
+|COLETTE Eotim
 |`LTUYH9`
 
-|Gilles DARJANA
+|CONDE Alpha Abdoulaye
 |`udJaxs`
 
-|Alexandre DUBOIS
+|DACCACHE Christian
 |`37rdmJ`
 
-|Janeka LOPP
+|FAUVEAU Jérémie
 |`hO9UHZ`
 
-|Rowan MERCIER
+|FEUTRIER Mélina
 |`TscXl0`
 
-|Benjamin POMMIER
+|GINESTE Pierre
 |`Da7zhX`
 
-|Antoine RIVAULT
+|LAFAYE Alexis
 |`ie9yML`
 
-|Ilker SOYTURK
+|LAINE Victor
 |`6vNNah`
 
-|Maximilien VERAN
-|`jXTODm`
+|LAMTIOUI Sami
+|`LNjIOt`
+
+|LAPLACE Tom
+|`7ZJJoU`
+
+|LEONELLI Marc-Antoine
+|`DGsEro`
+
+|PIN Matthieu
+|`WGOdDh`
+
+|PREVOT Nicolas
+|`cNzbYa`
+
+|ROUX Lucie
+|`BR6oh8`
+
+|SEGNI Maha
+|`I0nFGV`
+
+|SENOUSSA Ilyas
+|`5G9FTL`
+
+|SERVANT Matthias
+|`x9jFju`
+
+|SOHIER Jonathan
+|`WmC1P5`
 |=== 
 
-* Répondez aux questions suivantes *notées* sur `Quiziniere.com` ici : https://www.quiziniere.com/diffusions/5POKKY
+* Répondez aux questions suivantes *notées* sur `Quiziniere.com` ici : TODO
