@@ -6,6 +6,10 @@
 
 Utilisez la base de données `sample_restaurants`, collection `restaurants` pour les exercices suivants.
 
+```
+$ mongorestore -d test -c restaurants --drop ./datasets/restaurants.bson
+```
+
 == Exercices
 
 1. Écrivez une requête MongoDB pour afficher tous les documents dans les restaurants de collection.
