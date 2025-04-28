@@ -61,6 +61,10 @@ https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows-unattend
 
 https://www.mongodb.com/try/download/shell
 
+* `mongoimport`, `mongoexport`, `mongorestore`, `mongodump`, (CLI)
+
+https://www.mongodb.com/try/download/database-tools
+
 ==== Lancement / arrêt démon
 
 Le lancement / arrêt du service se fait par les services Windows, proposé lors de l'installation du `*.msi`
