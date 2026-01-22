@@ -43,7 +43,7 @@ image::ktor2.png[width=40%]
 * Générez le projet
 ** Extrayez le `.zip` dans le workspace de votre choix
 ** Ouvrez le projet (Open) dans IntelliJ Community IDE
-** Remplacez le fichier `src/main/resources/openapi/documentation.yaml` par le fichier `parkings.yaml` disponible sur `PEPAL`
+** Remplacez le fichier `src/main/resources/openapi/documentation.yaml` par le fichier `parkings.yaml` disponible sur `CESAR`
 
 NOTE: Testez que votre application se builde et lance bien :
 
