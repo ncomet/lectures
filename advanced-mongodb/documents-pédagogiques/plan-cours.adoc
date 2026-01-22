@@ -2,7 +2,7 @@
 Nicolas COMET <nicolas.comet@gmail.com>
 :lecture: MongoDB, Optimisations NoSQL
 :level: M2 Développement
-:year: 2024-2025
+:year: 2025-2026
 :numbered:
 
 [.metadata]
@@ -55,43 +55,43 @@ Les apprenants, à l'issue de la formation seront à même de :
 |Thématique de la session
 
 |1
-|3h
+|3,5h
 |Brise glace. Introduction à MongoDB, différence entre ACID/BASE, relationnel et document.
 
 |2
-|3h
+|3,5h
 |Installation des outils locaux, familiarisation avec le shell `mongosh` & Compass, premières requêtes.
 
 |3
-|3h
+|3,5h
 |Les différents types d'index, leurs implications, bonnes pratiques. Analyse des index: `explain`, `hint`. Comment interpréter et optimiser.
 
 |4
-|3h
+|3,5h
 |TD en groupe : Rapide intro : Artchitectures Hexagonales, Application backend de mise en pratique avec MongoDB
 
 |5
-|3h
+|3,5h
 |Principes de modélisation de données (normalisation, dénormalisation)
 
 |6
-|3h
+|3,5h
 |Pipeline d'aggrégation, `lookup`
 
 |7
-|3h
+|3,5h
 |Correction travail modélisation, Architecture et déploiement des clusters, bonne pratiques: working set, mémoire, disque
 
 |8
-|3h
+|3,5h
 |Réplication, sharding : mise à l'échelle horizontale vs. Mise à l'échelle verticale
 
 |9
-|3h
+|3,5h
 |Profilage & statistiques avancées: `mongotop`, `mongostat`
 
 |10
-|3h
+|3,5h
 |Évaluation finale
 |===
 

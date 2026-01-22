@@ -72,68 +72,64 @@ IMPORTANT: Renseignez le pseudo unique suivant afin de garantir votre anonymat s
 |===
 |Nom |Pseudo
 
-|AFIRI Driss
+|AILLOT Baptiste
 |`jYvfdE`
 
-|BERTHELOT Leane
+|BOUDIGUES Valentin
 |`IuG7ZA`
 
-|CHARASSON Gabin
+|DE BRISSON DE LAROCHE Antonin
 |`DqO9T3`
 
-|COLETTE Eotim
+|DOMINGUES Vincent
 |`LTUYH9`
 
-|CONDE Alpha Abdoulaye
+|FOUILLADE BARDET Romain
 |`udJaxs`
 
-|DACCACHE Christian
+|GARNIER BOIDUN Emmanuel Joël
 |`37rdmJ`
 
-|FAUVEAU Jérémie
+|GARRIGUES Thibault
 |`hO9UHZ`
 
-|FEUTRIER Mélina
+|LAYTOU Hugo
 |`TscXl0`
 
-|GINESTE Pierre
+|MAXIME Théo
 |`Da7zhX`
 
-|LAFAYE Alexis
+|MOHAMED Lilian, Yanis
 |`ie9yML`
 
-|LAINE Victor
+|NDIAYE Cheikh
 |`6vNNah`
 
-|LAMTIOUI Sami
+|NOEL Enzo
 |`LNjIOt`
 
-|LAPLACE Tom
+|NOYER Emilien
 |`7ZJJoU`
 
-|LEONELLI Marc-Antoine
+|PERGANDE Olivier
 |`DGsEro`
 
-|PIN Matthieu
+|PESCOT-JOURDAN Florian
 |`WGOdDh`
 
-|PREVOT Nicolas
+|PORTIER Killian
 |`cNzbYa`
 
-|ROUX Lucie
+|POUILLARD Maxime
 |`BR6oh8`
 
-|SEGNI Maha
+|SAIDI Yanis
 |`I0nFGV`
 
-|SENOUSSA Ilyas
+|YU TSUEN Kenny
 |`5G9FTL`
+|===
 
-|SERVANT Matthias
-|`x9jFju`
+* Répondez aux questions suivantes *notées* sur `Quiziniere.com` ici :
 
-|SOHIER Jonathan
-|`WmC1P5`
-|=== 
-
-* Répondez aux questions suivantes *notées* sur `Quiziniere.com` ici : https://www.quiziniere.com/diffusions/XJ4QMZ
+TODO
